@@ -1,6 +1,6 @@
 <?php
 
-namespace Interfloa\CdpApi\Model;
+namespace Interflora\CdpApi\Model;
 
 class Florist extends AbstractJsonSerializable
 {
@@ -65,18 +65,18 @@ class Florist extends AbstractJsonSerializable
   }
 
   /**
-   * @return \Interfloa\CdpApi\Model\Address
+   * @return \Interflora\CdpApi\Model\Address
    */
-  public function getAddress(): \Interfloa\CdpApi\Model\Address {
+  public function getAddress(): \Interflora\CdpApi\Model\Address {
     return $this->address;
   }
 
   /**
-   * @param \Interfloa\CdpApi\Model\Address $address
+   * @param \Interflora\CdpApi\Model\Address $address
    *
    * @return self
    */
-  public function setAddress(\Interfloa\CdpApi\Model\Address $address): self {
+  public function setAddress(\Interflora\CdpApi\Model\Address $address): self {
     $this->address = $address;
 
     return $this;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Interfloa\CdpApi\Model;
+namespace Interflora\CdpApi\Model;
 
 use DateTime;
 
@@ -229,14 +229,14 @@ class Order extends AbstractJsonSerializable
   }
 
   /**
-   * @return \Interfloa\CdpApi\Model\Notification[]
+   * @return \Interflora\CdpApi\Model\Notification[]
    */
   public function getNotifications(): array {
     return $this->notifications;
   }
 
   /**
-   * @param \Interfloa\CdpApi\Model\Notification[] $notifications
+   * @param \Interflora\CdpApi\Model\Notification[] $notifications
    *
    * @return $this
    */
@@ -247,14 +247,14 @@ class Order extends AbstractJsonSerializable
   }
 
   /**
-   * @return \Interfloa\CdpApi\Model\Payment[]
+   * @return \Interflora\CdpApi\Model\Payment[]
    */
   public function getPayments(): array {
     return $this->payments;
   }
 
   /**
-   * @param \Interfloa\CdpApi\Model\Payment[] $payments
+   * @param \Interflora\CdpApi\Model\Payment[] $payments
    *
    * @return $this
    */
@@ -567,7 +567,7 @@ class Order extends AbstractJsonSerializable
    *
    * @return $this
    */
-  public function setStore(array $store): self
+  public function setStore(string $store): self
   {
     $this->store = $store;
 

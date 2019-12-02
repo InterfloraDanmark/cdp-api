@@ -1,6 +1,6 @@
 <?php
 
-namespace Interfloa\CdpApi\Model;
+namespace Interflora\CdpApi\Model;
 
 class Payment extends AbstractJsonSerializable
 {

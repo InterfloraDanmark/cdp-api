@@ -1,8 +1,13 @@
 <?php
 
-namespace Interfloa\CdpApi\Model;
+namespace Interflora\CdpApi\Model;
 
-class Permission
+/**
+ * Class Permission
+ *
+ * @package Interflora\CdpApi\Model
+ */
+class Permission extends AbstractJsonSerializable
 {
   /**
    * @var string

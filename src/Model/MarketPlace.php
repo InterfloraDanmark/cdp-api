@@ -1,7 +1,12 @@
 <?php
 
-namespace Interfloa\CdpApi\Model;
+namespace Interflora\CdpApi\Model;
 
+/**
+ * Class MarketPlace
+ *
+ * @package Interflora\CdpApi\Model
+ */
 class MarketPlace extends AbstractJsonSerializable
 {
     /**
@@ -9,6 +14,11 @@ class MarketPlace extends AbstractJsonSerializable
      */
     protected $name;
 
+    /**
+     * MarketPlace constructor.
+     *
+     * @param $name
+     */
     public function __construct($name)
     {
         $this->name = $name;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Interfloa\CdpApi\Model;
+namespace Interflora\CdpApi\Model;
 
 class Item extends AbstractJsonSerializable
 {
@@ -293,14 +293,14 @@ class Item extends AbstractJsonSerializable
   }
 
   /**
-   * @return array|\Interfloa\CdpApi\Model\Data[]
+   * @return array|\Interflora\CdpApi\Model\Data[]
    */
   public function getCategory() {
     return $this->category;
   }
 
   /**
-   * @param array|\Interfloa\CdpApi\Model\Data[] $category
+   * @param array|\Interflora\CdpApi\Model\Data[] $category
    *
    * @return self
    */
@@ -311,14 +311,14 @@ class Item extends AbstractJsonSerializable
   }
 
   /**
-   * @return array|\Interfloa\CdpApi\Model\Data[]
+   * @return array|\Interflora\CdpApi\Model\Data[]
    */
   public function getOccation() {
     return $this->occation;
   }
 
   /**
-   * @param array|\Interfloa\CdpApi\Model\Data[] $occation
+   * @param array|\Interflora\CdpApi\Model\Data[] $occation
    *
    * @return self
    */
@@ -329,14 +329,14 @@ class Item extends AbstractJsonSerializable
   }
 
   /**
-   * @return array|\Interfloa\CdpApi\Model\Data[]
+   * @return array|\Interflora\CdpApi\Model\Data[]
    */
   public function getReceiver() {
     return $this->receiver;
   }
 
   /**
-   * @param array|\Interfloa\CdpApi\Model\Data[] $receiver
+   * @param array|\Interflora\CdpApi\Model\Data[] $receiver
    *
    * @return self
    */
@@ -347,14 +347,14 @@ class Item extends AbstractJsonSerializable
   }
 
   /**
-   * @return array|\Interfloa\CdpApi\Model\Data[]
+   * @return array|\Interflora\CdpApi\Model\Data[]
    */
   public function getColour() {
     return $this->colour;
   }
 
   /**
-   * @param array|\Interfloa\CdpApi\Model\Data[] $colour
+   * @param array|\Interflora\CdpApi\Model\Data[] $colour
    *
    * @return self
    */
@@ -365,9 +365,9 @@ class Item extends AbstractJsonSerializable
   }
 
   /**
-   * @return string
+   * @return string|null
    */
-  public function getMarketplace(): string {
+  public function getMarketplace(): ?string {
     return $this->marketplace;
   }
 

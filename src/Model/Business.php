@@ -1,6 +1,6 @@
 <?php
 
-namespace Interfloa\CdpApi\Model;
+namespace Interflora\CdpApi\Model;
 
 class Business extends AbstractJsonSerializable {
 
@@ -69,7 +69,7 @@ class Business extends AbstractJsonSerializable {
   /**
    * @param string|null $id
    *
-   * @return \Interfloa\CdpApi\Model\Business
+   * @return \Interflora\CdpApi\Model\Business
    */
   public function setId(?string $id): self {
     $this->id = $id;
@@ -87,7 +87,7 @@ class Business extends AbstractJsonSerializable {
   /**
    * @param string $name
    *
-   * @return \Interfloa\CdpApi\Model\Business
+   * @return \Interflora\CdpApi\Model\Business
    */
   public function setName(string $name): self {
     $this->name = $name;
@@ -105,7 +105,7 @@ class Business extends AbstractJsonSerializable {
   /**
    * @param string $debitorNumber
    *
-   * @return \Interfloa\CdpApi\Model\Business
+   * @return \Interflora\CdpApi\Model\Business
    */
   public function setDebitorNumber(string $debitorNumber): self {
     $this->debitorNumber = $debitorNumber;
@@ -123,7 +123,7 @@ class Business extends AbstractJsonSerializable {
   /**
    * @param string $telephone
    *
-   * @return \Interfloa\CdpApi\Model\Business
+   * @return \Interflora\CdpApi\Model\Business
    */
   public function setTelephone(string $telephone): self {
     $this->telephone = $telephone;
@@ -141,7 +141,7 @@ class Business extends AbstractJsonSerializable {
   /**
    * @param string $fax
    *
-   * @return \Interfloa\CdpApi\Model\Business
+   * @return \Interflora\CdpApi\Model\Business
    */
   public function setFax(string $fax): self {
     $this->fax = $fax;
@@ -159,7 +159,7 @@ class Business extends AbstractJsonSerializable {
   /**
    * @param string $monthlyInvoice
    *
-   * @return \Interfloa\CdpApi\Model\Business
+   * @return \Interflora\CdpApi\Model\Business
    */
   public function setMonthlyInvoice(string $monthlyInvoice): self {
     $this->monthlyInvoice = $monthlyInvoice;
@@ -177,7 +177,7 @@ class Business extends AbstractJsonSerializable {
   /**
    * @param string $electronicInvoice
    *
-   * @return \Interfloa\CdpApi\Model\Business
+   * @return \Interflora\CdpApi\Model\Business
    */
   public function setElectronicInvoice(string $electronicInvoice): self {
     $this->electronicInvoice = $electronicInvoice;
@@ -195,7 +195,7 @@ class Business extends AbstractJsonSerializable {
   /**
    * @param string $eanNumber
    *
-   * @return \Interfloa\CdpApi\Model\Business
+   * @return \Interflora\CdpApi\Model\Business
    */
   public function setEanNumber(string $eanNumber): self {
     $this->eanNumber = $eanNumber;
@@ -213,7 +213,7 @@ class Business extends AbstractJsonSerializable {
   /**
    * @param string $cvrNumber
    *
-   * @return \Interfloa\CdpApi\Model\Business
+   * @return \Interflora\CdpApi\Model\Business
    */
   public function setCvrNumber(string $cvrNumber): self {
     $this->cvrNumber = $cvrNumber;
@@ -231,7 +231,7 @@ class Business extends AbstractJsonSerializable {
   /**
    * @param string $companyReference
    *
-   * @return \Interfloa\CdpApi\Model\Business
+   * @return \Interflora\CdpApi\Model\Business
    */
   public function setCompanyReference(string $companyReference): self {
     $this->companyReference = $companyReference;
@@ -240,18 +240,18 @@ class Business extends AbstractJsonSerializable {
   }
 
   /**
-   * @return \Interfloa\CdpApi\Model\Address
+   * @return \Interflora\CdpApi\Model\Address
    */
-  public function getAddress(): \Interfloa\CdpApi\Model\Address {
+  public function getAddress(): \Interflora\CdpApi\Model\Address {
     return $this->address;
   }
 
   /**
-   * @param \Interfloa\CdpApi\Model\Address $address
+   * @param \Interflora\CdpApi\Model\Address $address
    *
-   * @return \Interfloa\CdpApi\Model\Business
+   * @return \Interflora\CdpApi\Model\Business
    */
-  public function setAddress(\Interfloa\CdpApi\Model\Address $address): self {
+  public function setAddress(\Interflora\CdpApi\Model\Address $address): self {
     $this->address = $address;
 
     return $this;

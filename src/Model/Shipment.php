@@ -1,6 +1,6 @@
 <?php
 
-namespace Interfloa\CdpApi\Model;
+namespace Interflora\CdpApi\Model;
 
 use DateTime;
 
@@ -100,6 +100,11 @@ class Shipment extends AbstractJsonSerializable
      * @var DateTime|null
      */
     protected $funeralTime;
+
+    /**
+     * @var string
+     */
+    protected $churchName;
 
     /**
      * @var string
@@ -367,6 +372,13 @@ class Shipment extends AbstractJsonSerializable
         return $this->leaveAtDoor;
     }
 
+  /**
+   * @return bool
+   */
+  public function getLeaveAtDoor(): bool {
+    return $this->leaveAtDoor;
+  }
+
     /**
      * @param bool $leaveAtDoor
      *
@@ -385,6 +397,13 @@ class Shipment extends AbstractJsonSerializable
         return $this->leaveAtNeighbour;
     }
 
+  /**
+   * @return bool
+   */
+  public function getLeaveAtNeighbour(): bool {
+    return $this->leaveAtNeighbour;
+  }
+
     /**
      * @param bool $leaveAtNeighbour
      *
@@ -397,18 +416,18 @@ class Shipment extends AbstractJsonSerializable
     }
 
     /**
-     * @return \Interfloa\CdpApi\Model\Address
+     * @return \Interflora\CdpApi\Model\Address
      */
-    public function getDeliveryAddress(): \Interfloa\CdpApi\Model\Address {
+    public function getDeliveryAddress(): \Interflora\CdpApi\Model\Address {
         return $this->deliveryAddress;
     }
 
     /**
-     * @param \Interfloa\CdpApi\Model\Address $deliveryAddress
+     * @param \Interflora\CdpApi\Model\Address $deliveryAddress
      *
      * @return self
      */
-    public function setDeliveryAddress(\Interfloa\CdpApi\Model\Address $deliveryAddress): self {
+    public function setDeliveryAddress(\Interflora\CdpApi\Model\Address $deliveryAddress): self {
         $this->deliveryAddress = $deliveryAddress;
 
         return $this;
@@ -471,6 +490,24 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return string
      */
+    public function getChurchName(): string {
+        return $this->churchName;
+    }
+
+    /**
+     * @param string $churchName
+     *
+     * @return self
+     */
+    public function setChurchName(string $churchName): self {
+        $this->churchName = $churchName;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
     public function getStore(): string {
         return $this->store;
     }
@@ -505,14 +542,14 @@ class Shipment extends AbstractJsonSerializable
     }
 
     /**
-     * @return \Interfloa\CdpApi\Model\Item[]
+     * @return \Interflora\CdpApi\Model\Item[]
      */
     public function getItems(): array {
         return $this->items;
     }
 
     /**
-     * @param \Interfloa\CdpApi\Model\Item[] $items
+     * @param \Interflora\CdpApi\Model\Item[] $items
      *
      * @return self
      */
@@ -535,18 +572,18 @@ class Shipment extends AbstractJsonSerializable
     }
 
     /**
-     * @return \Interfloa\CdpApi\Model\Florist
+     * @return \Interflora\CdpApi\Model\Florist
      */
-    public function getFlorist(): \Interfloa\CdpApi\Model\Florist {
+    public function getFlorist(): \Interflora\CdpApi\Model\Florist {
         return $this->florist;
     }
 
     /**
-     * @param \Interfloa\CdpApi\Model\Florist $florist
+     * @param \Interflora\CdpApi\Model\Florist $florist
      *
      * @return self
      */
-    public function setFlorist(\Interfloa\CdpApi\Model\Florist $florist): self {
+    public function setFlorist(\Interflora\CdpApi\Model\Florist $florist): self {
         $this->florist = $florist;
 
         return $this;
