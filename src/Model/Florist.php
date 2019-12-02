@@ -6,6 +6,10 @@ class Florist extends AbstractJsonSerializable
 {
 
     /**
+     * @var
+     */
+    protected $id;
+    /**
      * @var string
      */
     protected $name;
@@ -24,53 +28,94 @@ class Florist extends AbstractJsonSerializable
      */
     protected $floristId;
 
-    /**
-     * @param string $name
-     *
-     * @return $this
-     */
-    public function setName(?string $name): self
-    {
-        $this->name = $name;
+  /**
+   * @return mixed
+   */
+  public function getId() {
+    return $this->id;
+  }
 
-        return $this;
-    }
+  /**
+   * @param mixed $id
+   *
+   * @return self
+   */
+  public function setId($id): self {
+    $this->id = $id;
 
-    /**
-     * @param Address $address
-     *
-     * @return $this
-     */
-    public function setAddress(Address $address): self
-    {
-        $this->address = $address;
+    return $this;
+  }
 
-        return $this;
-    }
+  /**
+   * @return string
+   */
+  public function getName(): string {
+    return $this->name;
+  }
 
-    /**
-     * @param string $phone
-     *
-     * @return $this
-     */
-    public function setPhone(?string $phone): self
-    {
-        $this->telephone = $phone;
+  /**
+   * @param string $name
+   *
+   * @return self
+   */
+  public function setName(string $name): self {
+    $this->name = $name;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * @param string $floristId
-     *
-     * @return $this
-     */
-    public function setFloristId(string $floristId): self
-    {
-        $this->floristId = $floristId;
+  /**
+   * @return \Interfloa\CdpApi\Model\Address
+   */
+  public function getAddress(): \Interfloa\CdpApi\Model\Address {
+    return $this->address;
+  }
 
-        return $this;
-    }
+  /**
+   * @param \Interfloa\CdpApi\Model\Address $address
+   *
+   * @return self
+   */
+  public function setAddress(\Interfloa\CdpApi\Model\Address $address): self {
+    $this->address = $address;
 
+    return $this;
+  }
+
+  /**
+   * @return string
+   */
+  public function getTelephone(): string {
+    return $this->telephone;
+  }
+
+  /**
+   * @param string $telephone
+   *
+   * @return self
+   */
+  public function setTelephone(string $telephone): self {
+    $this->telephone = $telephone;
+
+    return $this;
+  }
+
+  /**
+   * @return string
+   */
+  public function getFloristId(): string {
+    return $this->floristId;
+  }
+
+  /**
+   * @param string $floristId
+   *
+   * @return self
+   */
+  public function setFloristId(string $floristId): self {
+    $this->floristId = $floristId;
+
+    return $this;
+  }
 
 }

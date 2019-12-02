@@ -2,160 +2,247 @@
 
 namespace Interfloa\CdpApi\Model;
 
-class Account extends AbstractJsonSerializable
-{
-    /**
-     * @var string|null
-     */
-    protected $id;
+class Account extends AbstractJsonSerializable {
 
-    /**
-     * @var string
-     */
-    protected $firstName;
-    /**
-     * @var string
-     */
-    protected $lastName = ' ';
-    /**
-     * @var string
-     */
-    protected $email;
-    /**
-     * @var string
-     */
-    protected $pwd1 = ' ';
-    /**
-     * @var string
-     */
-    protected $type = 'private';
-    /**
-     * @var string
-     */
-    protected $telephone;
-    /**
-     * @var string
-     */
-    protected $gender = 'm';
-    /**
-     * @var Address
-     */
-    protected $address;
+  /**
+   * Male gender.
+   */
+  public const MALE = 'm';
 
-    /**
-     * @param string|null $id
-     *
-     * @return $this
-     */
-    public function setId(?string $id): self
-    {
-        $this->id = $id;
+  /**
+   * Female gender.
+   */
+  public const FEMALE = 'f';
 
-        return $this;
-    }
+  /**
+   * @var string|null
+   */
+  private $id;
 
-    /**
-     * @param string $firstName
-     *
-     * @return $this
-     */
-    public function setFirstName(string $firstName): self
-    {
-        $this->firstName = $firstName;
+  /**
+   * @var string
+   */
+  private $firstName;
 
-        return $this;
-    }
+  /**
+   * @var string
+   */
+  private $lastName = ' ';
 
-    /**
-     * @param string $lastName
-     *
-     * @return $this
-     */
-    public function setLastName(string $lastName): self
-    {
-        $this->lastName = $lastName;
+  /**
+   * @var string
+   */
+  private $email;
 
-        return $this;
-    }
+  /**
+   * @var string
+   */
+  private $pwd1 = ' ';
 
-    /**
-     * @param string $email
-     *
-     * @return $this
-     */
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
+  /**
+   * @var string
+   */
+  private $type = 'private';
 
-        return $this;
-    }
+  /**
+   * @var string
+   */
+  private $telephone;
 
-    /**
-     * @return string
-     */
-    public function getEmail(): string
-    {
-        return $this->email;
-    }
+  /**
+   * @var string
+   */
+  private $gender = self::MALE;
 
-    /**
-     * @param string $pwd1
-     *
-     * @return $this
-     */
-    public function setPwd1(string $pwd1): self
-    {
-        $this->pwd1 = $pwd1;
+  /**
+   * @var Address
+   */
+  private $address;
 
-        return $this;
-    }
+  /**
+   * @var Business
+   */
+  private $business;
 
-    /**
-     * @param string $type
-     *
-     * @return $this
-     */
-    public function setType(string $type): self
-    {
-        $this->type = $type;
+  /**
+   * @return string
+   */
+  public function getId(): string {
+    return $this->id;
+  }
 
-        return $this;
-    }
+  /**
+   * @param string|null $id
+   *
+   * @return $this
+   */
+  public function setId(?string $id): self {
+    $this->id = $id;
 
-    /**
-     * @param string $telephone
-     *
-     * @return $this
-     */
-    public function setTelephone(string $telephone): self
-    {
-        $this->telephone = $telephone;
+    return $this;
+  }
 
-        return $this;
-    }
+  /**
+   * @return string
+   */
+  public function getFirstName(): string {
+    return $this->firstName;
+  }
 
-    /**
-     * @param string $gender
-     *
-     * @return $this
-     */
-    public function setGender(string $gender): self
-    {
-        $this->gender = $gender;
+  /**
+   * @param string $firstName
+   *
+   * @return $this
+   */
+  public function setFirstName(string $firstName): self {
+    $this->firstName = $firstName;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * @param Address $address
-     *
-     * @return $this
-     */
-    public function setAddress(Address $address): self
-    {
-        $this->address = $address;
+  /**
+   * @return string
+   */
+  public function getLastName(): string {
+    return $this->lastName;
+  }
 
-        return $this;
-    }
+  /**
+   * @param string $lastName
+   *
+   * @return $this
+   */
+  public function setLastName(string $lastName): self {
+    $this->lastName = $lastName;
+
+    return $this;
+  }
+
+  /**
+   * @return string
+   */
+  public function getEmail(): string {
+    return $this->email;
+  }
+
+  /**
+   * @param string $email
+   *
+   * @return $this
+   */
+  public function setEmail(string $email): self {
+    $this->email = $email;
+
+    return $this;
+  }
+
+  /**
+   * @return string
+   */
+  public function getPwd1(): string {
+    return $this->pwd1;
+  }
+
+  /**
+   * @param string $pwd1
+   *
+   * @return $this
+   */
+  public function setPwd1(string $pwd1): self {
+    $this->pwd1 = $pwd1;
+
+    return $this;
+  }
+
+  /**
+   * @return string
+   */
+  public function getType(): string {
+    return $this->type;
+  }
+
+  /**
+   * @param string $type
+   *
+   * @return $this
+   */
+  public function setType(string $type): self {
+    $this->type = $type;
+
+    return $this;
+  }
+
+  /**
+   * @return string
+   */
+  public function getTelephone(): string {
+    return $this->telephone;
+  }
+
+  /**
+   * @param string $telephone
+   *
+   * @return $this
+   */
+  public function setTelephone(string $telephone): self {
+    $this->telephone = $telephone;
+
+    return $this;
+  }
+
+  /**
+   * @return string
+   */
+  public function getGender(): string {
+    return $this->gender;
+  }
+
+  /**
+   * @param string $gender
+   *
+   * @return $this
+   */
+  public function setGender(string $gender): self {
+    $this->gender = $gender;
+
+    return $this;
+  }
+
+  /**
+   * @return \Interfloa\CdpApi\Model\Address
+   */
+  public function getAddress(): \Interfloa\CdpApi\Model\Address {
+    return $this->address;
+  }
+
+  /**
+   * @param \Interfloa\CdpApi\Model\Address $address
+   *
+   * @return $this
+   */
+  public function setAddress(\Interfloa\CdpApi\Model\Address $address): self {
+    $this->address = $address;
+
+    return $this;
+  }
+
+  /**
+   * @return \Interfloa\CdpApi\Model\Business
+   */
+  public function getBusiness(): \Interfloa\CdpApi\Model\Business {
+    return $this->business;
+  }
+
+  /**
+   * @param \Interfloa\CdpApi\Model\Business $business
+   *
+   * @return $this
+   */
+  public function setBusiness(\Interfloa\CdpApi\Model\Business $business): self {
+    $this->business = $business;
+
+    return $this;
+  }
+
 
 }

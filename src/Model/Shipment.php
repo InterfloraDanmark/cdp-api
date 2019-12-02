@@ -9,6 +9,11 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @var string
      */
+    protected $id;
+
+    /**
+     * @var string
+     */
     protected $shipmentId;
 
     /**
@@ -22,7 +27,6 @@ class Shipment extends AbstractJsonSerializable
     protected $type;
 
     /**
-     * @TODO IFOS doesn't have this information
      * @var DateTime
      */
     protected $created;
@@ -48,7 +52,6 @@ class Shipment extends AbstractJsonSerializable
     protected $deliveryCost;
 
     /**
-     * @TODO Not clear what to set
      * @var float
      */
     protected $extraCost;
@@ -119,253 +122,402 @@ class Shipment extends AbstractJsonSerializable
     protected $florist;
 
     /**
+     * @var array
+     */
+    protected $extra;
+
+    /**
+     * @return string
+     */
+    public function getId(): string {
+        return $this->id;
+    }
+
+    /**
+     * @param string $id
+     *
+     * @return self
+     */
+    public function setId(string $id): self {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getShipmentId(): string {
+        return $this->shipmentId;
+    }
+
+    /**
      * @param string $shipmentId
      *
-     * @return $this
+     * @return self
      */
-    public function setShipmentId(string $shipmentId): self
-    {
+    public function setShipmentId(string $shipmentId): self {
         $this->shipmentId = $shipmentId;
 
         return $this;
     }
 
     /**
+     * @return string
+     */
+    public function getName(): string {
+        return $this->name;
+    }
+
+    /**
      * @param string $name
      *
-     * @return $this
+     * @return self
      */
-    public function setName(string $name): self
-    {
+    public function setName(string $name): self {
         $this->name = $name;
 
         return $this;
     }
 
     /**
+     * @return string
+     */
+    public function getType(): string {
+        return $this->type;
+    }
+
+    /**
      * @param string $type
      *
-     * @return $this
+     * @return self
      */
-    public function setType(string $type): self
-    {
+    public function setType(string $type): self {
         $this->type = $type;
 
         return $this;
     }
 
     /**
-     * @param DateTime $updated
-     *
-     * @return $this
+     * @return \DateTime
      */
-    public function setUpdated(DateTime $updated): self
-    {
+    public function getCreated(): \DateTime {
+        return $this->created;
+    }
+
+    /**
+     * @param \DateTime $created
+     *
+     * @return self
+     */
+    public function setCreated(\DateTime $created): self {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdated(): \DateTime {
+        return $this->updated;
+    }
+
+    /**
+     * @param \DateTime $updated
+     *
+     * @return self
+     */
+    public function setUpdated(\DateTime $updated): self {
         $this->updated = $updated;
 
         return $this;
     }
 
     /**
+     * @return float
+     */
+    public function getShipmentTotal(): float {
+        return $this->shipmentTotal;
+    }
+
+    /**
      * @param float $shipmentTotal
      *
-     * @return $this
+     * @return self
      */
-    public function setShipmentTotal(float $shipmentTotal): self
-    {
+    public function setShipmentTotal(float $shipmentTotal): self {
         $this->shipmentTotal = $shipmentTotal;
 
         return $this;
     }
 
     /**
+     * @return float
+     */
+    public function getItemTotal(): float {
+        return $this->itemTotal;
+    }
+
+    /**
      * @param float $itemTotal
      *
-     * @return $this
+     * @return self
      */
-    public function setItemTotal(float $itemTotal): self
-    {
+    public function setItemTotal(float $itemTotal): self {
         $this->itemTotal = $itemTotal;
 
         return $this;
     }
 
     /**
+     * @return float
+     */
+    public function getDeliveryCost(): float {
+        return $this->deliveryCost;
+    }
+
+    /**
      * @param float $deliveryCost
      *
-     * @return $this
+     * @return self
      */
-    public function setDeliveryCost(float $deliveryCost): self
-    {
+    public function setDeliveryCost(float $deliveryCost): self {
         $this->deliveryCost = $deliveryCost;
 
         return $this;
     }
 
     /**
+     * @return float
+     */
+    public function getExtraCost(): float {
+        return $this->extraCost;
+    }
+
+    /**
      * @param float $extraCost
      *
-     * @return $this
+     * @return self
      */
-    public function setExtraCost(float $extraCost): self
-    {
+    public function setExtraCost(float $extraCost): self {
         $this->extraCost = $extraCost;
 
         return $this;
     }
 
     /**
+     * @return float
+     */
+    public function getFlowerTotal(): float {
+        return $this->flowerTotal;
+    }
+
+    /**
      * @param float $flowerTotal
      *
-     * @return $this
+     * @return self
      */
-    public function setFlowerTotal(float $flowerTotal): self
-    {
+    public function setFlowerTotal(float $flowerTotal): self {
         $this->flowerTotal = $flowerTotal;
 
         return $this;
     }
 
     /**
+     * @return float
+     */
+    public function getNetAmountTotal(): float {
+        return $this->netAmountTotal;
+    }
+
+    /**
      * @param float $netAmountTotal
      *
-     * @return $this
+     * @return self
      */
-    public function setNetAmountTotal(float $netAmountTotal): self
-    {
+    public function setNetAmountTotal(float $netAmountTotal): self {
         $this->netAmountTotal = $netAmountTotal;
 
         return $this;
     }
 
     /**
+     * @return float
+     */
+    public function getFloristCost(): float {
+        return $this->floristCost;
+    }
+
+    /**
      * @param float $floristCost
      *
-     * @return $this
+     * @return self
      */
-    public function setFloristCost(float $floristCost): self
-    {
+    public function setFloristCost(float $floristCost): self {
         $this->floristCost = $floristCost;
 
         return $this;
     }
 
     /**
+     * @return bool
+     */
+    public function isLeaveAtDoor(): bool {
+        return $this->leaveAtDoor;
+    }
+
+    /**
      * @param bool $leaveAtDoor
      *
-     * @return $this
+     * @return self
      */
-    public function setLeaveAtDoor(bool $leaveAtDoor): self
-    {
+    public function setLeaveAtDoor(bool $leaveAtDoor): self {
         $this->leaveAtDoor = $leaveAtDoor;
 
         return $this;
     }
 
     /**
+     * @return bool
+     */
+    public function isLeaveAtNeighbour(): bool {
+        return $this->leaveAtNeighbour;
+    }
+
+    /**
      * @param bool $leaveAtNeighbour
      *
-     * @return $this
+     * @return self
      */
-    public function setLeaveAtNeighbour(bool $leaveAtNeighbour): self
-    {
+    public function setLeaveAtNeighbour(bool $leaveAtNeighbour): self {
         $this->leaveAtNeighbour = $leaveAtNeighbour;
 
         return $this;
     }
 
     /**
-     * @param Address $deliveryAddress
-     *
-     * @return $this
+     * @return \Interfloa\CdpApi\Model\Address
      */
-    public function setDeliveryAddress(Address $deliveryAddress): self
-    {
+    public function getDeliveryAddress(): \Interfloa\CdpApi\Model\Address {
+        return $this->deliveryAddress;
+    }
+
+    /**
+     * @param \Interfloa\CdpApi\Model\Address $deliveryAddress
+     *
+     * @return self
+     */
+    public function setDeliveryAddress(\Interfloa\CdpApi\Model\Address $deliveryAddress): self {
         $this->deliveryAddress = $deliveryAddress;
 
         return $this;
     }
 
     /**
+     * @return string
+     */
+    public function getCardText(): string {
+        return $this->cardText;
+    }
+
+    /**
      * @param string $cardText
      *
-     * @return $this
+     * @return self
      */
-    public function setCardText(string $cardText): self
-    {
+    public function setCardText(string $cardText): self {
         $this->cardText = $cardText;
 
         return $this;
     }
 
     /**
-     * @param DateTime|null $deliveryDate
-     *
-     * @return $this
+     * @return \DateTime|null
      */
-    public function setDeliveryDate(?DateTime $deliveryDate): self
-    {
+    public function getDeliveryDate(): ?\DateTime {
+        return $this->deliveryDate;
+    }
+
+    /**
+     * @param \DateTime|null $deliveryDate
+     *
+     * @return self
+     */
+    public function setDeliveryDate(?\DateTime $deliveryDate): self {
         $this->deliveryDate = $deliveryDate;
 
         return $this;
     }
 
     /**
-     * @param DateTime|null $funeralTime
-     *
-     * @return $this
+     * @return \DateTime|null
      */
-    public function setFuneralTime(?DateTime $funeralTime): self
-    {
+    public function getFuneralTime(): ?\DateTime {
+       return $this->funeralTime;
+    }
+
+    /**
+     * @param \DateTime|null $funeralTime
+     *
+     * @return self
+     */
+    public function setFuneralTime(?\DateTime $funeralTime): self {
         $this->funeralTime = $funeralTime;
 
         return $this;
     }
 
     /**
+     * @return string
+     */
+    public function getStore(): string {
+        return $this->store;
+    }
+
+    /**
      * @param string $store
      *
-     * @return $this
+     * @return self
      */
-    public function setStore(string $store): self
-    {
+    public function setStore(string $store): self {
         $this->store = $store;
 
         return $this;
     }
 
     /**
+     * @return int
+     */
+    public function getWeeklyFrequency(): int {
+        return $this->weeklyFrequency;
+    }
+
+    /**
      * @param int $weeklyFrequency
      *
-     * @return $this
+     * @return self
      */
-    public function setWeeklyFrequency(int $weeklyFrequency): self
-    {
+    public function setWeeklyFrequency(int $weeklyFrequency): self {
         $this->weeklyFrequency = $weeklyFrequency;
 
         return $this;
     }
 
     /**
-     * @param Item[] $items
-     *
-     * @return $this
+     * @return \Interfloa\CdpApi\Model\Item[]
      */
-    public function setItems(array $items): self
-    {
-        $this->items = $items;
-
-        return $this;
+    public function getItems(): array {
+        return $this->items;
     }
 
     /**
-     * @param Florist $florist
+     * @param \Interfloa\CdpApi\Model\Item[] $items
      *
-     * @return $this
+     * @return self
      */
-    public function setFlorist(Florist $florist): self
-    {
-        $this->florist = $florist;
+    public function setItems(array $items): self {
+        $this->items = $items;
 
         return $this;
     }
@@ -381,5 +533,41 @@ class Shipment extends AbstractJsonSerializable
 
         return $this;
     }
+
+    /**
+     * @return \Interfloa\CdpApi\Model\Florist
+     */
+    public function getFlorist(): \Interfloa\CdpApi\Model\Florist {
+        return $this->florist;
+    }
+
+    /**
+     * @param \Interfloa\CdpApi\Model\Florist $florist
+     *
+     * @return self
+     */
+    public function setFlorist(\Interfloa\CdpApi\Model\Florist $florist): self {
+        $this->florist = $florist;
+
+        return $this;
+    }
+
+  /**
+   * @return array
+   */
+  public function getExtra(): array {
+    return $this->extra;
+  }
+
+  /**
+   * @param array $extra
+   *
+   * @return self
+   */
+  public function setExtra(array $extra): self {
+    $this->extra = $extra;
+
+    return $this;
+  }
 
 }

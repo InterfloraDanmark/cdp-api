@@ -3,6 +3,7 @@
 namespace Interfloa\CdpApi\Service;
 
 use Interfloa\CdpApi\Model\Account;
+use Interfloa\CdpApi\Model\Business;
 use Interfloa\CdpApi\Model\Order;
 use Interfloa\CdpApi\Traits\Loggable;
 use GuzzleHttp\Client;
@@ -10,9 +11,9 @@ use GuzzleHttp\Exception\RequestException;
 use JsonSerializable;
 
 /**
- * Class DmpClient
+ * Class CdpClient
  */
-class DmpClient
+class CdpClient
 {
     use Loggable;
 
@@ -27,6 +28,12 @@ class DmpClient
      */
     private $apiKey;
 
+  /**
+   * CdpClient constructor.
+   *
+   * @param string $url
+   * @param string $apiKey
+   */
     public function __construct(string $url, string $apiKey)
     {
         $this->client = new Client([
@@ -35,6 +42,11 @@ class DmpClient
         $this->apiKey = $apiKey;
     }
 
+    /**
+     * @param \Interfloa\CdpApi\Model\Order $order
+     *
+     * @return mixed|null
+     */
     public function getOrder(Order $order)
     {
         try {
@@ -45,16 +57,44 @@ class DmpClient
             return null;
         }
     }
-    public function getAccount(Order $order)
+
+    /**
+     * @param \Interfloa\CdpApi\Model\Account $account
+     *
+     * @return mixed|null
+     */
+    public function getAccount(Account $account)
     {
         try {
-            return json_decode($this->get(self::API_ROOT . '/account/' . $order->getId()), true);
+            return json_decode($this->get(self::API_ROOT . '/account/' . $account->getId()), true);
 
         } catch (RequestException $exception) {
             // Order could not be retrieved, usually because of 404 - not found
             return null;
         }
     }
+
+    /**
+     * @param \Interfloa\CdpApi\Model\Business $business
+     *
+     * @return mixed|null
+     */
+    public function getBusiness(Business $business)
+    {
+        try {
+            return json_decode($this->get(self::API_ROOT . '/business/' . $business->getId()), true);
+
+        } catch (RequestException $exception) {
+            // Order could not be retrieved, usually because of 404 - not found
+            return null;
+        }
+    }
+
+    /**
+     * @param \Interfloa\CdpApi\Model\Order $order
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function createOrder(Order $order)
     {
         $account = $this->getAccount($order);
@@ -78,12 +118,22 @@ class DmpClient
         return $this->post(self::API_ROOT . '/order', $order);
     }
 
+    /**
+     * @param \Interfloa\CdpApi\Model\Order $order
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function updateOrder(Order $order)
     {
         // @TODO check if it is a correct order id
         return $this->put(self::API_ROOT . '/order/' . $order->getId(), $order);
     }
 
+    /**
+     * @param string $email
+     *
+     * @return mixed|null
+     */
     public function getAccountByEmail(string $email)
     {
         try {
@@ -94,11 +144,55 @@ class DmpClient
         }
     }
 
+    /**
+     * @param \Interfloa\CdpApi\Model\Account $account
+     *
+     * @return mixed
+     */
     public function createAccount(Account $account)
     {
+        $path = sprintf('%s/account', self::API_ROOT);
         return json_decode($this->post(self::API_ROOT . '/account', $account)->getBody(), true);
     }
 
+  /**
+   * @param \Interfloa\CdpApi\Model\Account $account
+   *
+   * @return mixed
+   */
+  public function updateAccount(Account $account)
+  {
+    $path = sprintf('%s/account/%', self::API_ROOT, $account->getId());
+    return json_decode($this->patch($path, $account)->getBody(), true);
+  }
+
+    /**
+     * @param \Interfloa\CdpApi\Model\Business $business
+     *
+     * @return mixed
+     */
+    public function createBusiness(Business $business)
+    {
+        return json_decode($this->post(self::API_ROOT . '/business/', $business)->getBody(), true);
+    }
+
+    /**
+     * @param \Interfloa\CdpApi\Model\Business $business
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function updateBusiness(Business $business)
+    {
+      // @TODO check if it is a correct order id
+      return $this->put(self::API_ROOT . '/business/' . $business->getId(), $business);
+    }
+
+    /**
+     * @param $uri
+     * @param $data
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     protected function put($uri, $data)
     {
         $options = $this->getOptions($data);
@@ -108,6 +202,12 @@ class DmpClient
         return $this->client->put($uri, $options);
     }
 
+    /**
+     * @param $uri
+     * @param $data
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     protected function post($uri, $data)
     {
         $options = $this->getOptions($data);
@@ -117,6 +217,12 @@ class DmpClient
         return $this->client->post($uri, $options);
     }
 
+    /**
+     * @param $uri
+     * @param null $data
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     protected function get($uri, $data = null)
     {
         $options = $this->getOptions($data);

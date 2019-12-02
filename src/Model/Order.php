@@ -73,16 +73,14 @@ class Order extends AbstractJsonSerializable
     protected $email;
 
     /**
-     * @TODO consider removing this, as we don't have that information in IFOS
      * @var DateTime
      */
-//    protected $created;
+    protected $created;
 
     /**
-     * @TODO consider removing this, as we don't have that information in IFOS
      * @var DateTime
      */
-//    protected $updated;
+    protected $updated;
 
     /**
      * @var DateTime
@@ -93,6 +91,11 @@ class Order extends AbstractJsonSerializable
      * @var string
      */
     protected $orderStatus;
+
+    /**
+     * @var string
+     */
+    protected $orderTotal;
 
     /**
      * @var string
@@ -139,8 +142,7 @@ class Order extends AbstractJsonSerializable
     protected $store;
 
     /**
-     * @TODO not clear what has to go here, gciCertificate is not stored in IFOS
-     * @var Extra[]
+     * @var string
      */
     protected $extra;
 
@@ -184,12 +186,83 @@ class Order extends AbstractJsonSerializable
         preg_match('/^.+?-(\d+)/', $orderId, $matches);
 
         if (isset($matches[1])) {
-            $this->name = $matches[1];
-
+            $this->setName($matches[1]);
         }
 
         return $this;
     }
+
+  /**
+   * @return string
+   */
+  public function getName(): string {
+    return $this->name;
+  }
+
+  /**
+   * @param string $name
+   *
+   * @return $this
+   */
+  public function setName(string $name): self {
+    $this->name = $name;
+
+    return $this;
+  }
+
+  /**
+   * @return string
+   */
+  public function getType(): string {
+    return $this->type;
+  }
+
+  /**
+   * @param string $type
+   *
+   * @return $this
+   */
+  public function setType(string $type): self {
+    $this->type = $type;
+
+    return $this;
+  }
+
+  /**
+   * @return \Interfloa\CdpApi\Model\Notification[]
+   */
+  public function getNotifications(): array {
+    return $this->notifications;
+  }
+
+  /**
+   * @param \Interfloa\CdpApi\Model\Notification[] $notifications
+   *
+   * @return $this
+   */
+  public function setNotifications(array $notifications): self {
+    $this->notifications = $notifications;
+
+    return $this;
+  }
+
+  /**
+   * @return \Interfloa\CdpApi\Model\Payment[]
+   */
+  public function getPayments(): array {
+    return $this->payments;
+  }
+
+  /**
+   * @param \Interfloa\CdpApi\Model\Payment[] $payments
+   *
+   * @return $this
+   */
+  public function setPayments(array $payments): self {
+    $this->payments = $payments;
+
+    return $this;
+  }
 
     /**
      * @param string|null $accountId
@@ -283,6 +356,14 @@ class Order extends AbstractJsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getOrderStatus(): string
+    {
+        return $this->orderStatus;
+    }
+
+    /**
      * @param string $orderStatus
      *
      * @return $this
@@ -290,6 +371,26 @@ class Order extends AbstractJsonSerializable
     public function setOrderStatus(string $orderStatus): self
     {
         $this->orderStatus = $orderStatus;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOrdertotal(): string
+    {
+        return $this->orderStatus;
+    }
+
+    /**
+     * @param string $orderTotal
+     *
+     * @return $this
+     */
+    public function setOrderTotal(string $orderTotal): self
+    {
+        $this->orderTotal = $orderTotal;
 
         return $this;
     }
@@ -379,11 +480,19 @@ class Order extends AbstractJsonSerializable
     }
 
     /**
-     * @param Extra[] $extra
+     * @return string $extra
+     */
+    public function getExtra(): string
+    {
+        return $this->extra;
+    }
+
+    /**
+     * @param string $extra
      *
      * @return $this
      */
-    public function setExtra(array $extra): self
+    public function setExtra(string $extra): self
     {
         $this->extra = $extra;
 
@@ -413,6 +522,30 @@ class Order extends AbstractJsonSerializable
         return $this;
     }
 
+  /**
+   * @param string $marketplace
+   *
+   * @return $this
+   */
+  public function addMarketplace(string $marketplace): self
+  {
+    $this->marketplace[] = $marketplace;
+
+    return $this;
+  }
+
+  /**
+   * @param array $marketplace
+   *
+   * @return $this
+   */
+    public function setMarketplace(array $marketplace): self
+    {
+      $this->marketplace = $marketplace;
+
+      return $this;
+    }
+
     /**
      * @return MarketPlace[]
      */
@@ -429,7 +562,20 @@ class Order extends AbstractJsonSerializable
         return $this->store;
     }
 
-    /**
+  /**
+   * @param string $store
+   *
+   * @return $this
+   */
+  public function setStore(array $store): self
+  {
+    $this->store = $store;
+
+    return $this;
+  }
+
+
+  /**
      * @return Account
      */
     public function getAccount(): Account
