@@ -17,52 +17,52 @@ class Account extends AbstractJsonSerializable {
   /**
    * @var string|null
    */
-  private $id;
+  protected $id;
 
   /**
    * @var string
    */
-  private $firstName;
+  protected $firstName;
 
   /**
    * @var string
    */
-  private $lastName = ' ';
+  protected $lastName = ' ';
 
   /**
    * @var string
    */
-  private $email;
+  protected $email;
 
   /**
    * @var string
    */
-  private $pwd1 = ' ';
+  protected $pwd1 = ' ';
 
   /**
    * @var string
    */
-  private $type = 'private';
+  protected $type = 'protected';
 
   /**
    * @var string
    */
-  private $telephone;
+  protected $telephone;
 
   /**
    * @var string
    */
-  private $gender = self::MALE;
+  protected $gender = self::MALE;
 
   /**
    * @var Address
    */
-  private $address;
+  protected $address;
 
   /**
    * @var Business
    */
-  private $business;
+  protected $business;
 
   /**
    * @return string

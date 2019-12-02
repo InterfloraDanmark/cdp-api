@@ -6,6 +6,7 @@ use JsonSerializable;
 
 abstract class AbstractJsonSerializable implements JsonSerializable
 {
+
     /**
      * Specify data which should be serialized to JSON
      * @link  https://php.net/manual/en/jsonserializable.jsonserialize.php
@@ -16,9 +17,30 @@ abstract class AbstractJsonSerializable implements JsonSerializable
     public function jsonSerialize(): array
     {
         $data = [];
+        $numberFields = [
+            'orderTotal',
+            'shipmentTotal',
+            'shipmentCost',
+            'itemTotal',
+            'flowerTotal',
+            'floristCost',
+            'netTotal',
+            'itemTotal',
+            'shipmentCost',
+            'extraCost',
+            'netAmountTotal',
+            'floristCost',
+            'price',
+            'quantity',
+            'total',
+        ];
 
         foreach ($this as $key => $value) {
             if (null !== $value) {
+                if (in_array($key, $numberFields)) {
+                    $data[$key] = (float) number_format(round($value, 2), 2, ".", "");
+                    continue;
+                }
                 if ($value instanceof \DateTime) {
                     $data[$key] = $value->format('Y-m-d\TH:i:s\Z');
                     continue;

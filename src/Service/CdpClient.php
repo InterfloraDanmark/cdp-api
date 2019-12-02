@@ -1,11 +1,11 @@
 <?php
 
-namespace Interfloa\CdpApi\Service;
+namespace Interflora\CdpApi\Service;
 
-use Interfloa\CdpApi\Model\Account;
-use Interfloa\CdpApi\Model\Business;
-use Interfloa\CdpApi\Model\Order;
-use Interfloa\CdpApi\Traits\Loggable;
+use Interflora\CdpApi\Model\Account;
+use Interflora\CdpApi\Model\Business;
+use Interflora\CdpApi\Model\Order;
+use Interflora\CdpApi\Traits\Loggable;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use JsonSerializable;
@@ -43,7 +43,7 @@ class CdpClient
     }
 
     /**
-     * @param \Interfloa\CdpApi\Model\Order $order
+     * @param \Interflora\CdpApi\Model\Order $order
      *
      * @return mixed|null
      */
@@ -59,7 +59,7 @@ class CdpClient
     }
 
     /**
-     * @param \Interfloa\CdpApi\Model\Account $account
+     * @param \Interflora\CdpApi\Model\Account $account
      *
      * @return mixed|null
      */
@@ -75,7 +75,7 @@ class CdpClient
     }
 
     /**
-     * @param \Interfloa\CdpApi\Model\Business $business
+     * @param \Interflora\CdpApi\Model\Business $business
      *
      * @return mixed|null
      */
@@ -91,7 +91,7 @@ class CdpClient
     }
 
     /**
-     * @param \Interfloa\CdpApi\Model\Order $order
+     * @param \Interflora\CdpApi\Model\Order $order
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
@@ -119,7 +119,7 @@ class CdpClient
     }
 
     /**
-     * @param \Interfloa\CdpApi\Model\Order $order
+     * @param \Interflora\CdpApi\Model\Order $order
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
@@ -145,7 +145,7 @@ class CdpClient
     }
 
     /**
-     * @param \Interfloa\CdpApi\Model\Account $account
+     * @param \Interflora\CdpApi\Model\Account $account
      *
      * @return mixed
      */
@@ -156,7 +156,7 @@ class CdpClient
     }
 
   /**
-   * @param \Interfloa\CdpApi\Model\Account $account
+   * @param \Interflora\CdpApi\Model\Account $account
    *
    * @return mixed
    */
@@ -167,7 +167,7 @@ class CdpClient
   }
 
     /**
-     * @param \Interfloa\CdpApi\Model\Business $business
+     * @param \Interflora\CdpApi\Model\Business $business
      *
      * @return mixed
      */
@@ -177,7 +177,7 @@ class CdpClient
     }
 
     /**
-     * @param \Interfloa\CdpApi\Model\Business $business
+     * @param \Interflora\CdpApi\Model\Business $business
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
