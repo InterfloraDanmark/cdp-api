@@ -50,7 +50,9 @@ class CdpClient
     public function getOrder(Order $order)
     {
         try {
-            return json_decode($this->get(self::API_ROOT . '/order/' . $order->getId()), true);
+            $path = sprintf('%s/order/%s', self::API_ROOT, $order->getId());
+            $result = $this->get($path);
+            return json_decode($result->getBody(), true);
 
         } catch (RequestException $exception) {
             // Order could not be retrieved, usually because of 404 - not found
@@ -66,7 +68,9 @@ class CdpClient
     public function getAccount(Account $account)
     {
         try {
-            return json_decode($this->get(self::API_ROOT . '/account/' . $account->getId()), true);
+            $path = sprintf('%s/account/%s', self::API_ROOT, $account->getId());
+            $result = $this->get($path);
+            return json_decode($result->getBody(), true);
 
         } catch (RequestException $exception) {
             // Order could not be retrieved, usually because of 404 - not found
@@ -82,7 +86,9 @@ class CdpClient
     public function getBusiness(Business $business)
     {
         try {
-            return json_decode($this->get(self::API_ROOT . '/business/' . $business->getId()), true);
+            $path = sprintf('%s/business/%s', self::API_ROOT, $business->getId());
+            $result = $this->get($path);
+            return json_decode($result->getBody(), true);
 
         } catch (RequestException $exception) {
             // Order could not be retrieved, usually because of 404 - not found
@@ -97,22 +103,34 @@ class CdpClient
      */
     public function createOrder(Order $order)
     {
-        $account = $this->getAccount($order);
+        $path = sprintf('%s/order', self::API_ROOT);
+        $result = $this->post($path, $order);
+        return $result;
+    }
+
+    /**
+     * @param \Interflora\CdpApi\Model\Order $order
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function createOrderByAccount(Order $order)
+    {
+        $account = $this->getAccount($order->getAccount());
 
         // @TODO Do we need to update account at some point?
         // If there is no account, we try to get by Email or create a new one
         if (!isset($account['data']['id'])) {
-            $account = $this->getAccountByEmail($order->getAccount()->getEmail());
+          $account = $this->getAccountByEmail($order->getAccount()->getEmail());
+          if (isset($account['data']['id'])) {
+            $order->setAccountId($account['data']['id']);
+            $order->setAccount(null);
+          } else {
+            $account = $this->createAccount($order->getAccount());
             if (isset($account['data']['id'])) {
-                $order->setAccountId($account['data']['id']);
-                $order->setAccount(null);
-            } else {
-                $account = $this->createAccount($order->getAccount());
-                if (isset($account['data']['id'])) {
-                    $order->setAccountId($account['data']['id']);
-                    $order->setAccount(null);
-                }
+              $order->setAccountId($account['data']['id']);
+              $order->setAccount(null);
             }
+          }
         }
 
         return $this->post(self::API_ROOT . '/order', $order);
@@ -125,8 +143,8 @@ class CdpClient
      */
     public function updateOrder(Order $order)
     {
-        // @TODO check if it is a correct order id
-        return $this->put(self::API_ROOT . '/order/' . $order->getId(), $order);
+        $path = sprintf('%s/order/%s', self::API_ROOT, $order->getId());
+        return $this->put($path, $order);
     }
 
     /**
@@ -137,7 +155,8 @@ class CdpClient
     public function getAccountByEmail(string $email)
     {
         try {
-            return json_decode($this->get(self::API_ROOT . '/account/email/' . $email)->getBody(), true);
+            $path = sprintf('%s/account/email/%s', self::API_ROOT, $email);
+            return json_decode($this->get($path)->getBody(), true);
         } catch (RequestException $exception) {
             // Account could not be retrieved, usually because of 404 - not found
             return null;
@@ -152,7 +171,8 @@ class CdpClient
     public function createAccount(Account $account)
     {
         $path = sprintf('%s/account', self::API_ROOT);
-        return json_decode($this->post(self::API_ROOT . '/account', $account)->getBody(), true);
+        $result = $this->post($path, $account);
+        return json_decode($result->getBody(), true);
     }
 
   /**
@@ -162,8 +182,9 @@ class CdpClient
    */
   public function updateAccount(Account $account)
   {
-    $path = sprintf('%s/account/%', self::API_ROOT, $account->getId());
-    return json_decode($this->patch($path, $account)->getBody(), true);
+      $path = sprintf('%s/account/%', self::API_ROOT, $account->getId());
+      $result = $this->patch($path, $account);
+      return json_decode($result->getBody(), true);
   }
 
     /**
@@ -173,7 +194,9 @@ class CdpClient
      */
     public function createBusiness(Business $business)
     {
-        return json_decode($this->post(self::API_ROOT . '/business/', $business)->getBody(), true);
+        $path = sprintf('%s/business', self::API_ROOT);
+        $result = $this->post($path, $business);
+        return json_decode($result->getBody(), true);
     }
 
     /**
@@ -183,8 +206,9 @@ class CdpClient
      */
     public function updateBusiness(Business $business)
     {
-      // @TODO check if it is a correct order id
-      return $this->put(self::API_ROOT . '/business/' . $business->getId(), $business);
+      $path = sprintf('%s/business/%', self::API_ROOT, $business->getId());
+      $result = $this->patch($path, $business);
+      return json_decode($result->getBody(), true);
     }
 
     /**
@@ -200,6 +224,21 @@ class CdpClient
         $this->getLogger()->notice(json_encode($options));
 
         return $this->client->put($uri, $options);
+    }
+
+    /**
+     * @param $uri
+     * @param $data
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    protected function patch($uri, $data)
+    {
+        $options = $this->getOptions($data);
+        $this->getLogger()->notice('PUT request to uri: ' . $uri);
+        $this->getLogger()->notice(json_encode($options));
+
+        return $this->client->patch($uri, $options);
     }
 
     /**

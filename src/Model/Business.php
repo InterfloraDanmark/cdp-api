@@ -17,11 +17,6 @@ class Business extends AbstractJsonSerializable {
   /**
    * @var string
    */
-  protected $debitorNumber = '';
-
-  /**
-   * @var string
-   */
   protected $telephone = '';
 
   /**
@@ -30,14 +25,14 @@ class Business extends AbstractJsonSerializable {
   protected $fax = '';
 
   /**
-   * @var string
+   * @var bool
    */
-  protected $monthlyInvoice = '';
+  protected $monthlyInvoice = FALSE;
 
   /**
-   * @var string
+   * @var bool
    */
-  protected $electronicInvoice = '';
+  protected $electronicInvoice = FALSE;
 
   /**
    * @var string
@@ -98,24 +93,6 @@ class Business extends AbstractJsonSerializable {
   /**
    * @return string
    */
-  public function getDebitorNumber(): string {
-    return $this->debitorNumber;
-  }
-
-  /**
-   * @param string $debitorNumber
-   *
-   * @return \Interflora\CdpApi\Model\Business
-   */
-  public function setDebitorNumber(string $debitorNumber): self {
-    $this->debitorNumber = $debitorNumber;
-
-    return $this;
-  }
-
-  /**
-   * @return string
-   */
   public function getTelephone(): string {
     return $this->telephone;
   }
@@ -150,36 +127,36 @@ class Business extends AbstractJsonSerializable {
   }
 
   /**
-   * @return string
+   * @return bool
    */
-  public function getMonthlyInvoice(): string {
+  public function getMonthlyInvoice(): bool {
     return $this->monthlyInvoice;
   }
 
   /**
-   * @param string $monthlyInvoice
+   * @param bool $monthlyInvoice
    *
    * @return \Interflora\CdpApi\Model\Business
    */
-  public function setMonthlyInvoice(string $monthlyInvoice): self {
+  public function setMonthlyInvoice(bool $monthlyInvoice): self {
     $this->monthlyInvoice = $monthlyInvoice;
 
     return $this;
   }
 
   /**
-   * @return string
+   * @return bool
    */
-  public function getElectronicInvoice(): string {
+  public function getElectronicInvoice(): bool {
     return $this->electronicInvoice;
   }
 
   /**
-   * @param string $electronicInvoice
+   * @param bool $electronicInvoice
    *
    * @return \Interflora\CdpApi\Model\Business
    */
-  public function setElectronicInvoice(string $electronicInvoice): self {
+  public function setElectronicInvoice(bool $electronicInvoice): self {
     $this->electronicInvoice = $electronicInvoice;
 
     return $this;

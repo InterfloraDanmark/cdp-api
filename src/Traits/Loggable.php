@@ -1,8 +1,8 @@
 <?php
 
-namespace Interfloa\CdpApi\Traits;
+namespace Interflora\CdpApi\Traits;
 
-use Interfloa\CdpApi\Service\Logger;
+use Interflora\CdpApi\Service\Logger;
 use Psr\Log\LoggerInterface;
 
 trait Loggable

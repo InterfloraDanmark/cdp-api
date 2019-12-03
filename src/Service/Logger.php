@@ -1,6 +1,6 @@
 <?php
 
-namespace Interfloa\CdpApi\Service;
+namespace Interflora\CdpApi\Service;
 
 use Psr\Log\LoggerInterface;
 
