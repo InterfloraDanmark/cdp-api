@@ -20,9 +20,9 @@ class Account extends AbstractJsonSerializable {
   protected $id;
 
   /**
-   * @var string
+   * @var integer
    */
-  protected $debitorNumber = '';
+  protected $debitorNumber;
 
   /**
    * @var string
@@ -88,18 +88,18 @@ class Account extends AbstractJsonSerializable {
   }
 
   /**
-   * @return string
+   * @return int
    */
-  public function getDebitorNumber(): string {
+  public function getDebitorNumber(): int {
     return $this->debitorNumber;
   }
 
   /**
-   * @param string $debitorNumber
+   * @param int $debitorNumber
    *
    * @return $this
    */
-  public function setDebitorNumber(string $debitorNumber): self {
+  public function setDebitorNumber(int $debitorNumber): self {
     $this->debitorNumber = $debitorNumber;
 
     return $this;
