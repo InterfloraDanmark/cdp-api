@@ -90,7 +90,7 @@ class Account extends AbstractJsonSerializable {
   /**
    * @return int
    */
-  public function getDebitorNumber(): int {
+  public function getDebitorNumber(): ?int {
     return $this->debitorNumber;
   }
 
