@@ -142,6 +142,11 @@ class Order extends AbstractJsonSerializable
     protected $store;
 
     /**
+     * @var integer
+     */
+    protected $version;
+
+    /**
      * @var string
      */
     protected $extra;
@@ -547,6 +552,24 @@ class Order extends AbstractJsonSerializable
     }
 
     /**
+     * @return int
+     */
+    public function getVersion(): int {
+        return $this->version;
+    }
+
+    /**
+     * @param int $version
+     *
+     * @return $this
+     */
+    public function setVersion(int $version): self {
+        $this->version = $version;
+
+        return $this;
+    }
+
+    /**
      * @return MarketPlace[]
      */
     public function getMarketplace(): array
@@ -562,17 +585,17 @@ class Order extends AbstractJsonSerializable
         return $this->store;
     }
 
-  /**
-   * @param string $store
-   *
-   * @return $this
-   */
-  public function setStore(string $store): self
-  {
-    $this->store = $store;
+    /**
+     * @param string $store
+     *
+     * @return $this
+     */
+    public function setStore(string $store): self
+    {
+        $this->store = $store;
 
-    return $this;
-  }
+        return $this;
+    }
 
 
   /**
