@@ -28,12 +28,19 @@ class CdpClient
      */
     private $apiKey;
 
-  /**
-   * CdpClient constructor.
-   *
-   * @param string $url
-   * @param string $apiKey
-   */
+    /**
+     * The serializer.
+     *
+     * @var \Symfony\Component\Serializer\Serializer
+     */
+    private $serializer;
+
+    /**
+     * CdpClient constructor.
+     *
+     * @param string $url
+     * @param string $apiKey
+     */
     public function __construct(string $url, string $apiKey)
     {
         $this->client = new Client([
@@ -70,7 +77,8 @@ class CdpClient
         try {
             $path = sprintf('%s/account/%s', self::API_ROOT, $account->getId());
             $result = $this->get($path);
-            return json_decode($result->getBody(), true);
+            $content = json_decode($result->getBody(), true);
+            return $content;
 
         } catch (RequestException $exception) {
             // Order could not be retrieved, usually because of 404 - not found
@@ -105,7 +113,7 @@ class CdpClient
     {
         $path = sprintf('%s/order', self::API_ROOT);
         $result = $this->post($path, $order);
-        return $result;
+        return json_decode($result->getBody(), true);
     }
 
     /**
@@ -164,6 +172,22 @@ class CdpClient
     }
 
     /**
+     * @param string $uuid
+     *
+     * @return mixed|null
+     */
+    public function getAccountById(string $uuid)
+    {
+        try {
+            $path = sprintf('%s/account/%s', self::API_ROOT, $uuid);
+            return json_decode($this->get($path)->getBody(), true);
+        } catch (RequestException $exception) {
+            // Account could not be retrieved, usually because of 404 - not found
+            return null;
+        }
+    }
+
+    /**
      * @param \Interflora\CdpApi\Model\Account $account
      *
      * @return mixed
@@ -172,20 +196,32 @@ class CdpClient
     {
         $path = sprintf('%s/account', self::API_ROOT);
         $result = $this->post($path, $account);
-        return json_decode($result->getBody(), true);
+        return json_decode($result->getBody());
+    }
+
+    /**
+     * @param \Interflora\CdpApi\Model\Account $account
+     *
+     * @return mixed
+     */
+    public function updateAccount(Account $account)
+    {
+        $path = sprintf('%s/account/%s', self::API_ROOT, $account->getId());
+        $result = $this->patch($path, $account);
+        return json_decode($result->getBody());
     }
 
   /**
-   * @param \Interflora\CdpApi\Model\Account $account
+   * @param $uuid
    *
    * @return mixed
    */
-  public function updateAccount(Account $account)
-  {
-      $path = sprintf('%s/account/%', self::API_ROOT, $account->getId());
-      $result = $this->patch($path, $account);
-      return json_decode($result->getBody(), true);
-  }
+    public function deleteAccount($uuid)
+    {
+        $path = sprintf('%s/account/%s', self::API_ROOT, $uuid);
+        $result = $this->delete($path);
+        return json_decode($result->getBody(), true);
+    }
 
     /**
      * @param \Interflora\CdpApi\Model\Business $business
@@ -206,9 +242,21 @@ class CdpClient
      */
     public function updateBusiness(Business $business)
     {
-      $path = sprintf('%s/business/%', self::API_ROOT, $business->getId());
+      $path = sprintf('%s/business/%s', self::API_ROOT, $business->getId());
       $result = $this->patch($path, $business);
       return json_decode($result->getBody(), true);
+    }
+
+  /**
+   * @param $uuid
+   *
+   * @return mixed
+   */
+    public function deleteBusiness($uuid)
+    {
+        $path = sprintf('%s/business/%s', self::API_ROOT, $uuid);
+        $result = $this->delete($path);
+        return json_decode($result->getBody(), true);
     }
 
     /**
@@ -269,6 +317,21 @@ class CdpClient
         $this->getLogger()->notice(json_encode($options));
 
         return $this->client->get($uri, $options);
+    }
+
+    /**
+     * @param $uri
+     * @param null $data
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    protected function delete($uri)
+    {
+        $options = $this->getOptions(null);
+        $this->getLogger()->notice('DELETE request to uri: ' . $uri);
+        $this->getLogger()->notice(json_encode($options));
+
+        return $this->client->delete($uri, $options);
     }
 
     /**

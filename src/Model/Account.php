@@ -60,14 +60,14 @@ class Account extends AbstractJsonSerializable {
   protected $gender = self::MALE;
 
   /**
-   * @var Address
+   * @var \Interflora\CdpApi\Model\Address
    */
-  protected $address;
+  protected $address = null;
 
   /**
-   * @var Business
+   * @var \Interflora\CdpApi\Model\Business
    */
-  protected $business;
+  protected $business = null;
 
   /**
    * @return string
@@ -99,7 +99,7 @@ class Account extends AbstractJsonSerializable {
    *
    * @return $this
    */
-  public function setDebitorNumber(int $debitorNumber): self {
+  public function setDebitorNumber(?int $debitorNumber): self {
     $this->debitorNumber = $debitorNumber;
 
     return $this;
@@ -117,7 +117,7 @@ class Account extends AbstractJsonSerializable {
    *
    * @return $this
    */
-  public function setFirstName(string $firstName): self {
+  public function setFirstName(?string $firstName): self {
     $this->firstName = $firstName;
 
     return $this;
@@ -135,7 +135,7 @@ class Account extends AbstractJsonSerializable {
    *
    * @return $this
    */
-  public function setLastName(string $lastName): self {
+  public function setLastName(?string $lastName): self {
     $this->lastName = $lastName;
 
     return $this;
@@ -153,7 +153,7 @@ class Account extends AbstractJsonSerializable {
    *
    * @return $this
    */
-  public function setEmail(string $email): self {
+  public function setEmail(?string $email): self {
     $this->email = $email;
 
     return $this;
@@ -171,7 +171,7 @@ class Account extends AbstractJsonSerializable {
    *
    * @return $this
    */
-  public function setPwd1(string $pwd1): self {
+  public function setPwd1(?string $pwd1): self {
     $this->pwd1 = $pwd1;
 
     return $this;
@@ -189,7 +189,7 @@ class Account extends AbstractJsonSerializable {
    *
    * @return $this
    */
-  public function setType(string $type): self {
+  public function setType(?string $type): self {
     $this->type = $type;
 
     return $this;
@@ -207,7 +207,7 @@ class Account extends AbstractJsonSerializable {
    *
    * @return $this
    */
-  public function setTelephone(string $telephone): self {
+  public function setTelephone(?string $telephone): self {
     $this->telephone = $telephone;
 
     return $this;
@@ -225,7 +225,7 @@ class Account extends AbstractJsonSerializable {
    *
    * @return $this
    */
-  public function setGender(string $gender): self {
+  public function setGender(?string $gender): self {
     $this->gender = $gender;
 
     return $this;
@@ -234,7 +234,7 @@ class Account extends AbstractJsonSerializable {
   /**
    * @return \Interflora\CdpApi\Model\Address
    */
-  public function getAddress(): \Interflora\CdpApi\Model\Address {
+  public function getAddress(): ?\Interflora\CdpApi\Model\Address {
     return $this->address;
   }
 
@@ -243,7 +243,7 @@ class Account extends AbstractJsonSerializable {
    *
    * @return $this
    */
-  public function setAddress(\Interflora\CdpApi\Model\Address $address): self {
+  public function setAddress(?\Interflora\CdpApi\Model\Address $address): self {
     $this->address = $address;
 
     return $this;
@@ -252,7 +252,7 @@ class Account extends AbstractJsonSerializable {
   /**
    * @return \Interflora\CdpApi\Model\Business
    */
-  public function getBusiness(): \Interflora\CdpApi\Model\Business {
+  public function getBusiness(): ?\Interflora\CdpApi\Model\Business {
     return $this->business;
   }
 
@@ -261,7 +261,7 @@ class Account extends AbstractJsonSerializable {
    *
    * @return $this
    */
-  public function setBusiness(\Interflora\CdpApi\Model\Business $business): self {
+  public function setBusiness(?\Interflora\CdpApi\Model\Business $business): self {
     $this->business = $business;
 
     return $this;

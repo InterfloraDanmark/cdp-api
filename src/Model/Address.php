@@ -7,6 +7,10 @@ class Address extends AbstractJsonSerializable
     /**
      * @var string
      */
+    protected $id;
+    /**
+     * @var string
+     */
     protected $firstName;
     /**
      * @var string
@@ -30,6 +34,31 @@ class Address extends AbstractJsonSerializable
     protected $countryCode;
 
     /**
+     * @return string
+     */
+    public function getId(): string {
+        return $this->id;
+    }
+
+    /**
+     * @param string $id
+     *
+     * @return $this
+     */
+    public function setId(string $id): self {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstName(): string {
+        return $this->firstName;
+    }
+
+    /**
      * @param string $firstName
      *
      * @return $this
@@ -39,6 +68,13 @@ class Address extends AbstractJsonSerializable
         $this->firstName = $firstName;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFamilyName(): string {
+        return $this->familyName;
     }
 
     /**
@@ -54,6 +90,13 @@ class Address extends AbstractJsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getAddressLine1(): string {
+        return $this->addressLine1;
+    }
+
+    /**
      * @param string $addressLine1
      *
      * @return $this
@@ -63,6 +106,13 @@ class Address extends AbstractJsonSerializable
         $this->addressLine1 = $addressLine1;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPostalCode(): string {
+        return $this->postalCode;
     }
 
     /**
@@ -78,6 +128,13 @@ class Address extends AbstractJsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getLocality(): string {
+        return $this->locality;
+    }
+
+    /**
      * @param string $locality
      *
      * @return $this
@@ -87,6 +144,13 @@ class Address extends AbstractJsonSerializable
         $this->locality = $locality;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCountryCode(): string {
+        return $this->countryCode;
     }
 
     /**
