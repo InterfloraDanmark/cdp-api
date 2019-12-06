@@ -8,7 +8,9 @@ use Interflora\CdpApi\Model\Order;
 use Interflora\CdpApi\Traits\Loggable;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+use Interflora\IposApi\Traits\SetCache;
 use JsonSerializable;
+use Symfony\Component\Cache\Adapter\AdapterInterface;
 
 /**
  * Class CdpClient
@@ -27,13 +29,6 @@ class CdpClient
      * @var string
      */
     private $apiKey;
-
-    /**
-     * The serializer.
-     *
-     * @var \Symfony\Component\Serializer\Serializer
-     */
-    private $serializer;
 
     /**
      * CdpClient constructor.
@@ -103,6 +98,8 @@ class CdpClient
             return null;
         }
     }
+
+
 
     /**
      * @param \Interflora\CdpApi\Model\Order $order
@@ -196,7 +193,7 @@ class CdpClient
     {
         $path = sprintf('%s/account', self::API_ROOT);
         $result = $this->post($path, $account);
-        return json_decode($result->getBody());
+        return json_decode($result->getBody(), true);
     }
 
     /**
@@ -208,19 +205,40 @@ class CdpClient
     {
         $path = sprintf('%s/account/%s', self::API_ROOT, $account->getId());
         $result = $this->patch($path, $account);
-        return json_decode($result->getBody());
+        return json_decode($result->getBody(), true);
     }
 
-  /**
-   * @param $uuid
-   *
-   * @return mixed
-   */
+    /**
+     * @param $uuid
+     *
+     * @return mixed
+     */
     public function deleteAccount($uuid)
     {
         $path = sprintf('%s/account/%s', self::API_ROOT, $uuid);
         $result = $this->delete($path);
         return json_decode($result->getBody(), true);
+    }
+
+    /**
+     * @param string $type
+     *
+     * @return string|null
+     * @throws \Psr\Cache\InvalidArgumentException
+     */
+    public function getMarketingChannelByType(string $type): ?string
+    {
+        $channels  = json_decode($this->get('api/v1/marketingChannels')->getBody(), true);
+        $channelId = null;
+        if (isset($channels['data'])) {
+            foreach ($channels['data'] as $channel) {
+                if ($channel['type'] === $type) {
+                    $channelId = $channel['id'];
+                    break;
+                }
+            }
+        }
+        return $channelId;
     }
 
     /**

@@ -70,6 +70,11 @@ class Account extends AbstractJsonSerializable {
   protected $business = null;
 
   /**
+   * @var \Interflora\CdpApi\Model\MarketingPermission[]
+   */
+  protected $marketingPermissions = null;
+
+  /**
    * @return string
    */
   public function getId(): string {
@@ -267,5 +272,33 @@ class Account extends AbstractJsonSerializable {
     return $this;
   }
 
+  /**
+   * @return \Interflora\CdpApi\Model\MarketingPermission[]
+   */
+  public function getMarketingPermissions(): ?array {
+    return $this->marketingPermissions;
+  }
+
+  /**
+   * @param \Interflora\CdpApi\Model\MarketingPermission[] $marketingPermissions
+   *
+   * @return self
+   */
+  public function setMarketingPermissions(?array $marketingPermissions): self {
+    $this->marketingPermissions = $marketingPermissions;
+
+    return $this;
+  }
+
+  /**
+   * @param \Interflora\CdpApi\Model\MarketingPermission $marketingPermissions
+   *
+   * @return self
+   */
+  public function addMarketingPermissions(?MarketingPermission $marketingPermissions): self {
+    $this->marketingPermissions[] = $marketingPermissions;
+
+    return $this;
+  }
 
 }
