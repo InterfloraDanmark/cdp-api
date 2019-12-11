@@ -10,6 +10,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use JsonSerializable;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 /**
  * Class CdpClient
@@ -44,15 +45,19 @@ class CdpClient
     /**
      * CdpClient constructor.
      *
-     * @param string $url
-     * @param string $apiKey
+     * @param string                $url
+     * @param string                $apiKey
+     * @param AdapterInterface|null $adapter
      */
-    public function __construct(string $url, string $apiKey, AdapterInterface $adapter)
+    public function __construct(string $url, string $apiKey, AdapterInterface $adapter = null)
     {
         $this->client = new Client([
             'base_uri' => $url,
         ]);
         $this->apiKey = $apiKey;
+        if($adapter === null){
+            $adapter = new FilesystemAdapter();
+        }
         $this->cache  = $adapter;
     }
 
