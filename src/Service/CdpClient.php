@@ -28,19 +28,19 @@ class CdpClient
     /**
      * @var string
      */
-    private $apiKey;
+    protected $apiKey;
 
     /**
      * The serializer.
      *
      * @var \Symfony\Component\Serializer\Serializer
      */
-    private $serializer;
+    protected $serializer;
 
     /**
      * @var AdapterInterface
      */
-    private $cache;
+    protected $cache;
 
     /**
      * CdpClient constructor.
@@ -158,11 +158,9 @@ class CdpClient
 
     public function updateOrder(Order $order)
     {
-        $this->updateAccount($order);
-
         $order->setAccount(null);
-
-        return $this->patch('/api/v1/order/' . $order->getId(), $order);
+        $path = sprintf('%s/order/%s', self::API_ROOT, $order->getId());
+        return $this->patch($path, $order);
     }
 
     /**
@@ -273,7 +271,7 @@ class CdpClient
      * @param string $type
      *
      * @return string|null
-     * @throws \Exception
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     public function getMarketingChannelByType(string $type): ?string
     {

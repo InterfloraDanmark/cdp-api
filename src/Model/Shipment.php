@@ -130,7 +130,7 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @var array
      */
-    protected $extra;
+    protected $extra = [];
 
     /**
      * @var string
