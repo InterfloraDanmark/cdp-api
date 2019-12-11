@@ -7,5 +7,10 @@ class Extra extends AbstractJsonSerializable
     /**
      * @var array
      */
-    protected $gciCertificates = [];
+    public $gciCertificates = [];
+
+    /**
+     * @var array
+     */
+    public $subscription;
 }
