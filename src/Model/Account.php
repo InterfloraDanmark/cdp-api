@@ -4,301 +4,324 @@ namespace Interflora\CdpApi\Model;
 
 class Account extends AbstractJsonSerializable {
 
-  /**
-   * Male gender.
-   */
-  public const MALE = 'm';
+    /**
+     * Male gender.
+     */
+    public const MALE = 'm';
 
-  /**
-   * Female gender.
-   */
-  public const FEMALE = 'f';
+    /**
+     * Female gender.
+     */
+    public const FEMALE = 'f';
 
-  /**
-   * @var string|null
-   */
-  protected $id;
+    /**
+     * @var string|null
+     */
+    protected $id;
 
-  /**
-   * @var integer
-   */
-  protected $debitorNumber;
+    /**
+     * @var integer
+     */
+    protected $debitorNumber;
 
-  /**
-   * @var string
-   */
-  protected $firstName;
+    /**
+     * @var string
+     */
+    protected $firstName;
 
-  /**
-   * @var string
-   */
-  protected $lastName = ' ';
+    /**
+     * @var string
+     */
+    protected $lastName = ' ';
 
-  /**
-   * @var string
-   */
-  protected $email;
+    /**
+     * @var string
+     */
+    protected $email;
 
-  /**
-   * @var string
-   */
-  protected $pwd1 = ' ';
+    /**
+     * @var string
+     */
+    protected $pwd1 = ' ';
 
-  /**
-   * @var string
-   */
-  protected $type = 'protected';
+    /**
+     * @var string
+     */
+    protected $type = 'anon';
 
-  /**
-   * @var string
-   */
-  protected $telephone;
+    /**
+     * @var string
+     */
+    protected $source = '';
 
-  /**
-   * @var string
-   */
-  protected $gender = self::MALE;
+    /**
+     * @var string
+     */
+    protected $telephone;
 
-  /**
-   * @var \Interflora\CdpApi\Model\Address
-   */
-  protected $address;
+    /**
+     * @var string
+     */
+    protected $gender = self::MALE;
 
-  /**
-   * @var \Interflora\CdpApi\Model\Business
-   */
-  protected $business;
+    /**
+     * @var \Interflora\CdpApi\Model\Address
+     */
+    protected $address;
 
-  /**
-   * @var \Interflora\CdpApi\Model\MarketingPermission[]
-   */
-  protected $marketingPermissions = null;
+    /**
+     * @var \Interflora\CdpApi\Model\Business
+     */
+    protected $business;
 
-  /**
-   * @return string
-   */
-  public function getId():? string {
-    return $this->id;
-  }
+    /**
+     * @var \Interflora\CdpApi\Model\MarketingPermission[]
+     */
+    protected $marketingPermissions = null;
 
-  /**
-   * @param string|null $id
-   *
-   * @return $this
-   */
-  public function setId(?string $id): self {
-    $this->id = $id;
+    /**
+     * @return string
+     */
+    public function getId():? string {
+        return $this->id;
+    }
 
-    return $this;
-  }
+    /**
+     * @param string|null $id
+     *
+     * @return $this
+     */
+    public function setId(?string $id): self {
+        $this->id = $id;
 
-  /**
-   * @return int
-   */
-  public function getDebitorNumber(): int {
-    return $this->debitorNumber;
-  }
+        return $this;
+    }
 
-  /**
-   * @param int $debitorNumber
-   *
-   * @return $this
-   */
-  public function setDebitorNumber(?int $debitorNumber): self {
-    $this->debitorNumber = $debitorNumber;
+    /**
+     * @return int
+     */
+    public function getDebitorNumber(): int {
+        return $this->debitorNumber;
+    }
 
-    return $this;
-  }
+    /**
+     * @param int $debitorNumber
+     *
+     * @return $this
+     */
+    public function setDebitorNumber(?int $debitorNumber): self {
+        $this->debitorNumber = $debitorNumber;
 
-  /**
-   * @return string
-   */
-  public function getFirstName(): string {
-    return $this->firstName;
-  }
+        return $this;
+    }
 
-  /**
-   * @param string $firstName
-   *
-   * @return $this
-   */
-  public function setFirstName(?string $firstName): self {
-    $this->firstName = $firstName;
+    /**
+     * @return string
+     */
+    public function getFirstName(): string {
+        return $this->firstName;
+    }
 
-    return $this;
-  }
+    /**
+     * @param string $firstName
+     *
+     * @return $this
+     */
+    public function setFirstName(?string $firstName): self {
+        $this->firstName = $firstName;
 
-  /**
-   * @return string
-   */
-  public function getLastName(): string {
-    return $this->lastName;
-  }
+        return $this;
+    }
 
-  /**
-   * @param string $lastName
-   *
-   * @return $this
-   */
-  public function setLastName(?string $lastName): self {
-    $this->lastName = $lastName;
+    /**
+     * @return string
+     */
+    public function getLastName(): string {
+        return $this->lastName;
+    }
 
-    return $this;
-  }
+    /**
+     * @param string $lastName
+     *
+     * @return $this
+     */
+    public function setLastName(?string $lastName): self {
+        $this->lastName = $lastName;
 
-  /**
-   * @return string
-   */
-  public function getEmail(): string {
-    return $this->email;
-  }
+        return $this;
+    }
 
-  /**
-   * @param string $email
-   *
-   * @return $this
-   */
-  public function setEmail(?string $email): self {
-    $this->email = $email;
+    /**
+     * @return string
+     */
+    public function getEmail(): string {
+        return $this->email;
+    }
 
-    return $this;
-  }
+    /**
+     * @param string $email
+     *
+     * @return $this
+     */
+    public function setEmail(?string $email): self {
+        $this->email = $email;
 
-  /**
-   * @return string
-   */
-  public function getPwd1(): string {
-    return $this->pwd1;
-  }
+        return $this;
+    }
 
-  /**
-   * @param string $pwd1
-   *
-   * @return $this
-   */
-  public function setPwd1(?string $pwd1): self {
-    $this->pwd1 = $pwd1;
+    /**
+     * @return string
+     */
+    public function getPwd1(): string {
+        return $this->pwd1;
+    }
 
-    return $this;
-  }
+    /**
+     * @param string $pwd1
+     *
+     * @return $this
+     */
+    public function setPwd1(?string $pwd1): self {
+        $this->pwd1 = $pwd1;
 
-  /**
-   * @return string
-   */
-  public function getType(): string {
-    return $this->type;
-  }
+        return $this;
+    }
 
-  /**
-   * @param string $type
-   *
-   * @return $this
-   */
-  public function setType(?string $type): self {
-    $this->type = $type;
+    /**
+     * @return string
+     */
+    public function getType(): string {
+        return $this->type;
+    }
 
-    return $this;
-  }
+    /**
+     * @param string $type
+     *
+     * @return $this
+     */
+    public function setType(?string $type): self {
+        $this->type = $type;
 
-  /**
-   * @return string
-   */
-  public function getTelephone(): string {
-    return $this->telephone;
-  }
+        return $this;
+    }
 
-  /**
-   * @param string $telephone
-   *
-   * @return $this
-   */
-  public function setTelephone(?string $telephone): self {
-    $this->telephone = $telephone;
+    /**
+     * @return string
+     */
+    public function getSource(): string {
+        return $this->source;
+    }
 
-    return $this;
-  }
+    /**
+     * @param string $type
+     *
+     * @return $this
+     */
+    public function setSource(?string $source): self {
+        $this->source = $source;
 
-  /**
-   * @return string
-   */
-  public function getGender(): string {
-    return $this->gender;
-  }
+        return $this;
+    }
 
-  /**
-   * @param string $gender
-   *
-   * @return $this
-   */
-  public function setGender(?string $gender): self {
-    $this->gender = $gender;
+    /**
+     * @return string
+     */
+    public function getTelephone(): string {
+        return $this->telephone;
+    }
 
-    return $this;
-  }
+    /**
+     * @param string $telephone
+     *
+     * @return $this
+     */
+    public function setTelephone(?string $telephone): self {
+        $this->telephone = $telephone;
 
-  /**
-   * @return \Interflora\CdpApi\Model\Address
-   */
-  public function getAddress(): ?\Interflora\CdpApi\Model\Address {
-    return $this->address;
-  }
+        return $this;
+    }
 
-  /**
-   * @param \Interflora\CdpApi\Model\Address $address
-   *
-   * @return $this
-   */
-  public function setAddress(?\Interflora\CdpApi\Model\Address $address): self {
-    $this->address = $address;
+    /**
+     * @return string
+     */
+    public function getGender(): string {
+        return $this->gender;
+    }
 
-    return $this;
-  }
+    /**
+     * @param string $gender
+     *
+     * @return $this
+     */
+    public function setGender(?string $gender): self {
+        $this->gender = $gender;
 
-  /**
-   * @return \Interflora\CdpApi\Model\Business
-   */
-  public function getBusiness(): ?\Interflora\CdpApi\Model\Business {
-    return $this->business;
-  }
+        return $this;
+    }
 
-  /**
-   * @param \Interflora\CdpApi\Model\Business $business
-   *
-   * @return $this
-   */
-  public function setBusiness(?\Interflora\CdpApi\Model\Business $business): self {
-    $this->business = $business;
+    /**
+     * @return \Interflora\CdpApi\Model\Address
+     */
+    public function getAddress(): ?\Interflora\CdpApi\Model\Address {
+        return $this->address;
+    }
 
-    return $this;
-  }
+    /**
+     * @param \Interflora\CdpApi\Model\Address $address
+     *
+     * @return $this
+     */
+    public function setAddress(?\Interflora\CdpApi\Model\Address $address): self {
+        $this->address = $address;
 
-  /**
-   * @return \Interflora\CdpApi\Model\MarketingPermission[]
-   */
-  public function getMarketingPermissions(): ?array {
-    return $this->marketingPermissions;
-  }
+        return $this;
+    }
 
-  /**
-   * @param \Interflora\CdpApi\Model\MarketingPermission[] $marketingPermissions
-   *
-   * @return self
-   */
-  public function setMarketingPermissions(?array $marketingPermissions): self {
-    $this->marketingPermissions = $marketingPermissions;
+    /**
+     * @return \Interflora\CdpApi\Model\Business
+     */
+    public function getBusiness(): ?\Interflora\CdpApi\Model\Business {
+        return $this->business;
+    }
 
-    return $this;
-  }
+    /**
+     * @param \Interflora\CdpApi\Model\Business $business
+     *
+     * @return $this
+     */
+    public function setBusiness(?\Interflora\CdpApi\Model\Business $business): self {
+        $this->business = $business;
 
-  /**
-   * @param \Interflora\CdpApi\Model\MarketingPermission $marketingPermissions
-   *
-   * @return self
-   */
-  public function addMarketingPermissions(?MarketingPermission $marketingPermissions): self {
-    $this->marketingPermissions[] = $marketingPermissions;
+        return $this;
+    }
 
-    return $this;
-  }
+    /**
+     * @return \Interflora\CdpApi\Model\MarketingPermission[]
+     */
+    public function getMarketingPermissions(): ?array {
+        return $this->marketingPermissions;
+    }
+
+    /**
+     * @param \Interflora\CdpApi\Model\MarketingPermission[] $marketingPermissions
+     *
+     * @return self
+     */
+    public function setMarketingPermissions(?array $marketingPermissions): self {
+        $this->marketingPermissions = $marketingPermissions;
+
+        return $this;
+    }
+
+    /**
+     * @param \Interflora\CdpApi\Model\MarketingPermission $marketingPermissions
+     *
+     * @return self
+     */
+    public function addMarketingPermissions(?MarketingPermission $marketingPermissions): self {
+        $this->marketingPermissions[] = $marketingPermissions;
+
+        return $this;
+    }
 
 }

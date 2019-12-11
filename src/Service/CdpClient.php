@@ -28,19 +28,19 @@ class CdpClient
     /**
      * @var string
      */
-    private $apiKey;
+    protected $apiKey;
 
     /**
      * The serializer.
      *
      * @var \Symfony\Component\Serializer\Serializer
      */
-    private $serializer;
+    protected $serializer;
 
     /**
      * @var AdapterInterface
      */
-    private $cache;
+    protected $cache;
 
     /**
      * CdpClient constructor.
@@ -271,7 +271,7 @@ class CdpClient
      * @param string $type
      *
      * @return string|null
-     * @throws \Exception
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     public function getMarketingChannelByType(string $type): ?string
     {
