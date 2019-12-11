@@ -149,7 +149,7 @@ class CdpClient
     public function updateOrder(Order $order)
     {
         $path = sprintf('%s/order/%s', self::API_ROOT, $order->getId());
-        return $this->put($path, $order);
+        return $this->patch($path, $order);
     }
 
     /**
