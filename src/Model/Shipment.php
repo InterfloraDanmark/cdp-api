@@ -6,6 +6,7 @@ use DateTime;
 
 class Shipment extends AbstractJsonSerializable
 {
+
     /**
      * @var string
      */
@@ -119,7 +120,7 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @var Item[]
      */
-    protected $items;
+    protected $items = [];
 
     /**
      * @var Florist
@@ -132,9 +133,15 @@ class Shipment extends AbstractJsonSerializable
     protected $extra;
 
     /**
+     * @var string
+     */
+    protected $specialRequest;
+
+    /**
      * @return string
      */
-    public function getId(): string {
+    public function getId(): string
+    {
         return $this->id;
     }
 
@@ -143,7 +150,8 @@ class Shipment extends AbstractJsonSerializable
      *
      * @return self
      */
-    public function setId(string $id): self {
+    public function setId(string $id): self
+    {
         $this->id = $id;
 
         return $this;
@@ -152,7 +160,8 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return string
      */
-    public function getShipmentId(): string {
+    public function getShipmentId(): string
+    {
         return $this->shipmentId;
     }
 
@@ -161,7 +170,8 @@ class Shipment extends AbstractJsonSerializable
      *
      * @return self
      */
-    public function setShipmentId(string $shipmentId): self {
+    public function setShipmentId(string $shipmentId): self
+    {
         $this->shipmentId = $shipmentId;
 
         return $this;
@@ -170,7 +180,8 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return string
      */
-    public function getName(): string {
+    public function getName(): string
+    {
         return $this->name;
     }
 
@@ -179,7 +190,8 @@ class Shipment extends AbstractJsonSerializable
      *
      * @return self
      */
-    public function setName(string $name): self {
+    public function setName(string $name): self
+    {
         $this->name = $name;
 
         return $this;
@@ -188,7 +200,8 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return string
      */
-    public function getType(): string {
+    public function getType(): string
+    {
         return $this->type;
     }
 
@@ -197,7 +210,8 @@ class Shipment extends AbstractJsonSerializable
      *
      * @return self
      */
-    public function setType(string $type): self {
+    public function setType(string $type): self
+    {
         $this->type = $type;
 
         return $this;
@@ -206,7 +220,8 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return \DateTime
      */
-    public function getCreated(): \DateTime {
+    public function getCreated(): \DateTime
+    {
         return $this->created;
     }
 
@@ -215,7 +230,8 @@ class Shipment extends AbstractJsonSerializable
      *
      * @return self
      */
-    public function setCreated(\DateTime $created): self {
+    public function setCreated(\DateTime $created): self
+    {
         $this->created = $created;
 
         return $this;
@@ -224,7 +240,8 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return \DateTime
      */
-    public function getUpdated(): \DateTime {
+    public function getUpdated(): \DateTime
+    {
         return $this->updated;
     }
 
@@ -233,7 +250,8 @@ class Shipment extends AbstractJsonSerializable
      *
      * @return self
      */
-    public function setUpdated(\DateTime $updated): self {
+    public function setUpdated(\DateTime $updated): self
+    {
         $this->updated = $updated;
 
         return $this;
@@ -242,7 +260,8 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return float
      */
-    public function getShipmentTotal(): float {
+    public function getShipmentTotal(): float
+    {
         return $this->shipmentTotal;
     }
 
@@ -251,7 +270,8 @@ class Shipment extends AbstractJsonSerializable
      *
      * @return self
      */
-    public function setShipmentTotal(float $shipmentTotal): self {
+    public function setShipmentTotal(float $shipmentTotal): self
+    {
         $this->shipmentTotal = $shipmentTotal;
 
         return $this;
@@ -260,7 +280,8 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return float
      */
-    public function getItemTotal(): float {
+    public function getItemTotal(): float
+    {
         return $this->itemTotal;
     }
 
@@ -269,7 +290,8 @@ class Shipment extends AbstractJsonSerializable
      *
      * @return self
      */
-    public function setItemTotal(float $itemTotal): self {
+    public function setItemTotal(float $itemTotal): self
+    {
         $this->itemTotal = $itemTotal;
 
         return $this;
@@ -278,7 +300,8 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return float
      */
-    public function getDeliveryCost(): float {
+    public function getDeliveryCost(): float
+    {
         return $this->deliveryCost;
     }
 
@@ -287,7 +310,8 @@ class Shipment extends AbstractJsonSerializable
      *
      * @return self
      */
-    public function setDeliveryCost(float $deliveryCost): self {
+    public function setDeliveryCost(float $deliveryCost): self
+    {
         $this->deliveryCost = $deliveryCost;
 
         return $this;
@@ -296,7 +320,8 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return float
      */
-    public function getExtraCost(): float {
+    public function getExtraCost(): float
+    {
         return $this->extraCost;
     }
 
@@ -305,7 +330,8 @@ class Shipment extends AbstractJsonSerializable
      *
      * @return self
      */
-    public function setExtraCost(float $extraCost): self {
+    public function setExtraCost(float $extraCost): self
+    {
         $this->extraCost = $extraCost;
 
         return $this;
@@ -314,7 +340,8 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return float
      */
-    public function getFlowerTotal(): float {
+    public function getFlowerTotal(): float
+    {
         return $this->flowerTotal;
     }
 
@@ -323,7 +350,8 @@ class Shipment extends AbstractJsonSerializable
      *
      * @return self
      */
-    public function setFlowerTotal(float $flowerTotal): self {
+    public function setFlowerTotal(float $flowerTotal): self
+    {
         $this->flowerTotal = $flowerTotal;
 
         return $this;
@@ -332,7 +360,8 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return float
      */
-    public function getNetAmountTotal(): float {
+    public function getNetAmountTotal(): float
+    {
         return $this->netAmountTotal;
     }
 
@@ -341,7 +370,8 @@ class Shipment extends AbstractJsonSerializable
      *
      * @return self
      */
-    public function setNetAmountTotal(float $netAmountTotal): self {
+    public function setNetAmountTotal(float $netAmountTotal): self
+    {
         $this->netAmountTotal = $netAmountTotal;
 
         return $this;
@@ -350,7 +380,8 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return float
      */
-    public function getFloristCost(): float {
+    public function getFloristCost(): float
+    {
         return $this->floristCost;
     }
 
@@ -359,7 +390,8 @@ class Shipment extends AbstractJsonSerializable
      *
      * @return self
      */
-    public function setFloristCost(float $floristCost): self {
+    public function setFloristCost(float $floristCost): self
+    {
         $this->floristCost = $floristCost;
 
         return $this;
@@ -368,23 +400,26 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return bool
      */
-    public function isLeaveAtDoor(): bool {
+    public function isLeaveAtDoor(): bool
+    {
         return $this->leaveAtDoor;
     }
 
-  /**
-   * @return bool
-   */
-  public function getLeaveAtDoor(): bool {
-    return $this->leaveAtDoor;
-  }
+    /**
+     * @return bool
+     */
+    public function getLeaveAtDoor(): bool
+    {
+        return $this->leaveAtDoor;
+    }
 
     /**
      * @param bool $leaveAtDoor
      *
      * @return self
      */
-    public function setLeaveAtDoor(bool $leaveAtDoor): self {
+    public function setLeaveAtDoor(bool $leaveAtDoor): self
+    {
         $this->leaveAtDoor = $leaveAtDoor;
 
         return $this;
@@ -393,41 +428,46 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return bool
      */
-    public function isLeaveAtNeighbour(): bool {
+    public function isLeaveAtNeighbour(): bool
+    {
         return $this->leaveAtNeighbour;
     }
 
-  /**
-   * @return bool
-   */
-  public function getLeaveAtNeighbour(): bool {
-    return $this->leaveAtNeighbour;
-  }
+    /**
+     * @return bool
+     */
+    public function getLeaveAtNeighbour(): bool
+    {
+        return $this->leaveAtNeighbour;
+    }
 
     /**
      * @param bool $leaveAtNeighbour
      *
      * @return self
      */
-    public function setLeaveAtNeighbour(bool $leaveAtNeighbour): self {
+    public function setLeaveAtNeighbour(bool $leaveAtNeighbour): self
+    {
         $this->leaveAtNeighbour = $leaveAtNeighbour;
 
         return $this;
     }
 
     /**
-     * @return \Interflora\CdpApi\Model\Address
+     * @return Address
      */
-    public function getDeliveryAddress(): \Interflora\CdpApi\Model\Address {
+    public function getDeliveryAddress():? Address
+    {
         return $this->deliveryAddress;
     }
 
     /**
-     * @param \Interflora\CdpApi\Model\Address $deliveryAddress
+     * @param Address $deliveryAddress
      *
      * @return self
      */
-    public function setDeliveryAddress(\Interflora\CdpApi\Model\Address $deliveryAddress): self {
+    public function setDeliveryAddress(Address $deliveryAddress): self
+    {
         $this->deliveryAddress = $deliveryAddress;
 
         return $this;
@@ -436,7 +476,8 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return string
      */
-    public function getCardText(): string {
+    public function getCardText(): string
+    {
         return $this->cardText;
     }
 
@@ -445,7 +486,8 @@ class Shipment extends AbstractJsonSerializable
      *
      * @return self
      */
-    public function setCardText(string $cardText): self {
+    public function setCardText(string $cardText): self
+    {
         $this->cardText = $cardText;
 
         return $this;
@@ -454,7 +496,8 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return \DateTime|null
      */
-    public function getDeliveryDate(): ?\DateTime {
+    public function getDeliveryDate(): ?\DateTime
+    {
         return $this->deliveryDate;
     }
 
@@ -463,7 +506,8 @@ class Shipment extends AbstractJsonSerializable
      *
      * @return self
      */
-    public function setDeliveryDate(?\DateTime $deliveryDate): self {
+    public function setDeliveryDate(?\DateTime $deliveryDate): self
+    {
         $this->deliveryDate = $deliveryDate;
 
         return $this;
@@ -472,8 +516,9 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return \DateTime|null
      */
-    public function getFuneralTime(): ?\DateTime {
-       return $this->funeralTime;
+    public function getFuneralTime(): ?\DateTime
+    {
+        return $this->funeralTime;
     }
 
     /**
@@ -481,7 +526,8 @@ class Shipment extends AbstractJsonSerializable
      *
      * @return self
      */
-    public function setFuneralTime(?\DateTime $funeralTime): self {
+    public function setFuneralTime(?\DateTime $funeralTime): self
+    {
         $this->funeralTime = $funeralTime;
 
         return $this;
@@ -490,7 +536,8 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return string
      */
-    public function getChurchName(): string {
+    public function getChurchName(): string
+    {
         return $this->churchName;
     }
 
@@ -499,7 +546,8 @@ class Shipment extends AbstractJsonSerializable
      *
      * @return self
      */
-    public function setChurchName(string $churchName): self {
+    public function setChurchName(string $churchName): self
+    {
         $this->churchName = $churchName;
 
         return $this;
@@ -508,7 +556,8 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return string
      */
-    public function getStore(): string {
+    public function getStore(): string
+    {
         return $this->store;
     }
 
@@ -517,7 +566,8 @@ class Shipment extends AbstractJsonSerializable
      *
      * @return self
      */
-    public function setStore(string $store): self {
+    public function setStore(string $store): self
+    {
         $this->store = $store;
 
         return $this;
@@ -526,7 +576,8 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return int
      */
-    public function getWeeklyFrequency(): int {
+    public function getWeeklyFrequency(): int
+    {
         return $this->weeklyFrequency;
     }
 
@@ -535,7 +586,8 @@ class Shipment extends AbstractJsonSerializable
      *
      * @return self
      */
-    public function setWeeklyFrequency(int $weeklyFrequency): self {
+    public function setWeeklyFrequency(int $weeklyFrequency): self
+    {
         $this->weeklyFrequency = $weeklyFrequency;
 
         return $this;
@@ -544,7 +596,8 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return \Interflora\CdpApi\Model\Item[]
      */
-    public function getItems(): array {
+    public function getItems(): array
+    {
         return $this->items;
     }
 
@@ -553,7 +606,8 @@ class Shipment extends AbstractJsonSerializable
      *
      * @return self
      */
-    public function setItems(array $items): self {
+    public function setItems(array $items): self
+    {
         $this->items = $items;
 
         return $this;
@@ -572,39 +626,72 @@ class Shipment extends AbstractJsonSerializable
     }
 
     /**
-     * @return \Interflora\CdpApi\Model\Florist
+     * @return Florist
      */
-    public function getFlorist(): \Interflora\CdpApi\Model\Florist {
+    public function getFlorist():? Florist
+    {
         return $this->florist;
     }
 
     /**
-     * @param \Interflora\CdpApi\Model\Florist $florist
+     * @param Florist $florist
      *
      * @return self
      */
-    public function setFlorist(\Interflora\CdpApi\Model\Florist $florist): self {
+    public function setFlorist(Florist $florist): self
+    {
         $this->florist = $florist;
 
         return $this;
     }
 
-  /**
-   * @return array
-   */
-  public function getExtra(): array {
-    return $this->extra;
-  }
+    /**
+     * @return array
+     */
+    public function getExtra(): array
+    {
+        return $this->extra;
+    }
 
-  /**
-   * @param array $extra
-   *
-   * @return self
-   */
-  public function setExtra(array $extra): self {
-    $this->extra = $extra;
+    /**
+     * @param array $extra
+     *
+     * @return self
+     */
+    public function setExtra(array $extra): self
+    {
+        $this->extra = $extra;
 
-    return $this;
-  }
+        return $this;
+    }
 
+    /**
+     * @param string $specialRequest
+     *
+     * @return $this
+     */
+    public function setSpecialRequest(string $specialRequest): self
+    {
+        $this->specialRequest = $specialRequest;
+
+        return $this;
+    }
+
+    /**
+     * @param $sku
+     * @param $price
+     * @param $quantity
+     *
+     * @return Item|null
+     */
+    public function getItemBySkuPriceAndQuantity($sku, $price, $quantity): ?Item
+    {
+        foreach ($this->items as $item) {
+            if ($item->getSku() === $sku && $item->getPrice() === $price && $item->getQuantity() === $quantity) {
+                return $item;
+            }
+        }
+
+        return null;
+    }
 }

@@ -9,13 +9,14 @@ namespace Interflora\CdpApi\Model;
  */
 class Permission extends AbstractJsonSerializable
 {
-  /**
-   * @var string
-   */
-  protected $id;
 
     /**
      * @var string
+     */
+    protected $id;
+
+    /**
+     * @var string|null
      */
     protected $channelId;
 
@@ -34,95 +35,105 @@ class Permission extends AbstractJsonSerializable
      */
     protected $value;
 
-  /**
-   * @return string
-   */
-  public function getId(): string {
-    return $this->id;
-  }
+    /**
+     * @return string|null
+     */
+    public function getId():? string
+    {
+        return $this->id;
+    }
 
-  /**
-   * @param string $id
-   *
-   * @return self
-   */
-  public function setId(string $id): self {
-    $this->id = $id;
+    /**
+     * @param string $id
+     *
+     * @return self
+     */
+    public function setId(string $id): self
+    {
+        $this->id = $id;
 
-    return $this;
-  }
+        return $this;
+    }
 
-  /**
-   * @return string
-   */
-  public function getChannelId(): string {
-    return $this->channelId;
-  }
+    /**
+     * @return string|null
+     */
+    public function getChannelId():? string
+    {
+        return $this->channelId;
+    }
 
-  /**
-   * @param string $channelId
-   *
-   * @return self
-   */
-  public function setChannelId(string $channelId): self {
-    $this->channelId = $channelId;
+    /**
+     * @param string|null $channelId
+     *
+     * @return self
+     */
+    public function setChannelId(?string $channelId): self
+    {
+        $this->channelId = $channelId;
 
-    return $this;
-  }
+        return $this;
+    }
 
-  /**
-   * @return string
-   */
-  public function getOwner(): string {
-    return $this->owner;
-  }
+    /**
+     * @return string
+     */
+    public function getOwner(): string
+    {
+        return $this->owner;
+    }
 
-  /**
-   * @param string $owner
-   *
-   * @return self
-   */
-  public function setOwner(string $owner): self {
-    $this->owner = $owner;
+    /**
+     * @param string $owner
+     *
+     * @return self
+     */
+    public function setOwner(string $owner): self
+    {
+        $this->owner = $owner;
 
-    return $this;
-  }
+        return $this;
+    }
 
-  /**
-   * @return string
-   */
-  public function getSource(): string {
-    return $this->source;
-  }
+    /**
+     * @return string
+     */
+    public function getSource(): string
+    {
+        return $this->source;
+    }
 
-  /**
-   * @param string $source
-   *
-   * @return self
-   */
-  public function setSource(string $source): self {
-    $this->source = $source;
+    /**
+     * @param string $source
+     *
+     * @return self
+     */
+    public function setSource(string $source): self
+    {
+        $this->source = $source;
 
-    return $this;
-  }
+        return $this;
+    }
 
-  /**
-   * @return bool
-   */
-  public function isValue(): bool {
-    return $this->value;
-  }
+    /**
+     * @return bool
+     */
+    public function isValue(): bool
+    {
+        return $this->value;
+    }
 
-  /**
-   * @param bool $value
-   *
-   * @return self
-   */
-  public function setValue(bool $value): self {
-    $this->value = $value;
+    /**
+     * @param bool $value
+     *
+     * @return self
+     */
+    public function setValue(bool $value): self
+    {
+        $this->value = $value;
 
-    return $this;
-  }
+        return $this;
+    }
 
 
 }

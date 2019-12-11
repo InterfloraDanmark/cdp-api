@@ -8,9 +8,9 @@ use Interflora\CdpApi\Model\Order;
 use Interflora\CdpApi\Traits\Loggable;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
-use Interflora\IposApi\Traits\SetCache;
 use JsonSerializable;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 /**
  * Class CdpClient
@@ -31,17 +31,34 @@ class CdpClient
     private $apiKey;
 
     /**
+     * The serializer.
+     *
+     * @var \Symfony\Component\Serializer\Serializer
+     */
+    private $serializer;
+
+    /**
+     * @var AdapterInterface
+     */
+    private $cache;
+
+    /**
      * CdpClient constructor.
      *
-     * @param string $url
-     * @param string $apiKey
+     * @param string                $url
+     * @param string                $apiKey
+     * @param AdapterInterface|null $adapter
      */
-    public function __construct(string $url, string $apiKey)
+    public function __construct(string $url, string $apiKey, AdapterInterface $adapter = null)
     {
         $this->client = new Client([
             'base_uri' => $url,
         ]);
         $this->apiKey = $apiKey;
+        if($adapter === null){
+            $adapter = new FilesystemAdapter();
+        }
+        $this->cache  = $adapter;
     }
 
     /**
@@ -99,8 +116,6 @@ class CdpClient
         }
     }
 
-
-
     /**
      * @param \Interflora\CdpApi\Model\Order $order
      *
@@ -120,36 +135,34 @@ class CdpClient
      */
     public function createOrderByAccount(Order $order)
     {
-        $account = $this->getAccount($order->getAccount());
-
-        // @TODO Do we need to update account at some point?
-        // If there is no account, we try to get by Email or create a new one
-        if (!isset($account['data']['id'])) {
-          $account = $this->getAccountByEmail($order->getAccount()->getEmail());
-          if (isset($account['data']['id'])) {
-            $order->setAccountId($account['data']['id']);
-            $order->setAccount(null);
-          } else {
-            $account = $this->createAccount($order->getAccount());
-            if (isset($account['data']['id'])) {
-              $order->setAccountId($account['data']['id']);
-              $order->setAccount(null);
-            }
-          }
+        if ($order->hasAccountId()) {
+            $account = $this->getAccount($order);
         }
 
-        return $this->post(self::API_ROOT . '/order', $order);
+        if (!isset($account['data']['id']) && $order->getAccount() !== null) {
+            $account = $this->getAccountByEmail($order->getAccount()->getEmail());
+            if (isset($account['data']['id'])) {
+                $order->setAccountId($account['data']['id']);
+            } else {
+                $account = $this->createAccount($order->getAccount());
+                if (isset($account['data']['id'])) {
+                    $order->setAccountId($account['data']['id']);
+                }
+            }
+        }
+
+        $order->setAccount(null);
+
+        return $this->post('/api/v1/order', $order);
     }
 
-    /**
-     * @param \Interflora\CdpApi\Model\Order $order
-     *
-     * @return \Psr\Http\Message\ResponseInterface
-     */
     public function updateOrder(Order $order)
     {
-        $path = sprintf('%s/order/%s', self::API_ROOT, $order->getId());
-        return $this->put($path, $order);
+        $this->updateAccount($order);
+
+        $order->setAccount(null);
+
+        return $this->patch('/api/v1/order/' . $order->getId(), $order);
     }
 
     /**
@@ -221,27 +234,6 @@ class CdpClient
     }
 
     /**
-     * @param string $type
-     *
-     * @return string|null
-     * @throws \Psr\Cache\InvalidArgumentException
-     */
-    public function getMarketingChannelByType(string $type): ?string
-    {
-        $channels  = json_decode($this->get('api/v1/marketingChannels')->getBody(), true);
-        $channelId = null;
-        if (isset($channels['data'])) {
-            foreach ($channels['data'] as $channel) {
-                if ($channel['type'] === $type) {
-                    $channelId = $channel['id'];
-                    break;
-                }
-            }
-        }
-        return $channelId;
-    }
-
-    /**
      * @param \Interflora\CdpApi\Model\Business $business
      *
      * @return mixed
@@ -275,6 +267,43 @@ class CdpClient
         $path = sprintf('%s/business/%s', self::API_ROOT, $uuid);
         $result = $this->delete($path);
         return json_decode($result->getBody(), true);
+    }
+
+    /**
+     * @param string $type
+     *
+     * @return string|null
+     * @throws \Exception
+     */
+    public function getMarketingChannelByType(string $type): ?string
+    {
+        $key       = 'marketingChannel_' . $type;
+        $cacheItem = $this->cache->getItem($key);
+
+        if ($cacheItem->isHit()) {
+            return $cacheItem->get();
+        }
+
+        $channels  = json_decode($this->get('api/v1/marketingChannels')->getBody(), true);
+        $channelId = null;
+
+        if (isset($channels['data'])) {
+            foreach ($channels['data'] as $channel) {
+                if ($channel['type'] === $type) {
+                    $channelId = $channel['id'];
+                    break;
+                }
+            }
+        }
+
+        if ($channelId !== null) {
+            // @TODO once we are live, increase to P1D
+            $cacheItem->expiresAfter(new \DateInterval('PT10M'));
+            $cacheItem->set($channelId);
+            $this->cache->save($cacheItem);
+        }
+
+        return $channelId;
     }
 
     /**

@@ -5,7 +5,7 @@ namespace Interflora\CdpApi\Model;
 class Address extends AbstractJsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $id;
     /**
@@ -34,18 +34,28 @@ class Address extends AbstractJsonSerializable
     protected $countryCode;
 
     /**
-     * @return string
+     * @var string
      */
-    public function getId(): string {
+    protected $organization;
+
+    /**
+     * @var string
+     */
+    protected $specialRequest;
+
+    /**
+     * @return string|null
+     */
+    public function getId():? string {
         return $this->id;
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return $this
      */
-    public function setId(string $id): self {
+    public function setId(?string $id): self {
         $this->id = $id;
 
         return $this;
@@ -161,6 +171,30 @@ class Address extends AbstractJsonSerializable
     public function setCountryCode(string $countryCode): self
     {
         $this->countryCode = $countryCode;
+
+        return $this;
+    }
+
+    /**
+     * @param string $organization
+     *
+     * @return $this
+     */
+    public function setOrganization(string $organization): self
+    {
+        $this->organization = $organization;
+
+        return $this;
+    }
+
+    /**
+     * @param string $specialRequest
+     *
+     * @return $this
+     */
+    public function setSpecialRequest(string $specialRequest): self
+    {
+        $this->specialRequest = $specialRequest;
 
         return $this;
     }
