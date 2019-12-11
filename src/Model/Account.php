@@ -62,12 +62,12 @@ class Account extends AbstractJsonSerializable {
   /**
    * @var \Interflora\CdpApi\Model\Address
    */
-  protected $address = null;
+  protected $address;
 
   /**
    * @var \Interflora\CdpApi\Model\Business
    */
-  protected $business = null;
+  protected $business;
 
   /**
    * @var \Interflora\CdpApi\Model\MarketingPermission[]
@@ -77,7 +77,7 @@ class Account extends AbstractJsonSerializable {
   /**
    * @return string
    */
-  public function getId(): string {
+  public function getId():? string {
     return $this->id;
   }
 
@@ -95,7 +95,7 @@ class Account extends AbstractJsonSerializable {
   /**
    * @return int
    */
-  public function getDebitorNumber(): ?int {
+  public function getDebitorNumber(): int {
     return $this->debitorNumber;
   }
 

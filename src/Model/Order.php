@@ -53,7 +53,7 @@ class Order extends AbstractJsonSerializable
     protected $accountId;
 
     /**
-     * @var Account
+     * @var Account|null
      */
     protected $account;
 
@@ -124,7 +124,7 @@ class Order extends AbstractJsonSerializable
     /**
      * @var Permission[]
      */
-    protected $permissions;
+    protected $permissions = [];
 
     /**
      * @var Payment[]
@@ -147,7 +147,7 @@ class Order extends AbstractJsonSerializable
     protected $version;
 
     /**
-     * @var string
+     * @var Extra
      */
     protected $extra;
 
@@ -461,6 +461,18 @@ class Order extends AbstractJsonSerializable
     }
 
     /**
+     * @param Permission $permission
+     *
+     * @return $this
+     */
+    public function addPermission(Permission $permission): self
+    {
+        $this->permissions[] = $permission;
+
+        return $this;
+    }
+
+    /**
      * @param Payment $payment
      *
      * @return $this
@@ -493,11 +505,11 @@ class Order extends AbstractJsonSerializable
     }
 
     /**
-     * @param string $extra
+     * @param Extra $extra
      *
      * @return $this
      */
-    public function setExtra(string $extra): self
+    public function setExtra(Extra $extra): self
     {
         $this->extra = $extra;
 
@@ -520,7 +532,7 @@ class Order extends AbstractJsonSerializable
 
     public function setStoreBySource(string $source)
     {
-        if (array_key_exists($source, self::STORE_MAP)) {
+        if (empty($this->store) && array_key_exists($source, self::STORE_MAP)) {
             $this->store = self::STORE_MAP[$source];
         }
 
@@ -585,25 +597,97 @@ class Order extends AbstractJsonSerializable
         return $this->store;
     }
 
-    /**
-     * @param string $store
-     *
-     * @return $this
-     */
-    public function setStore(string $store): self
-    {
-        $this->store = $store;
+  /**
+   * @param string $store
+   *
+   * @return $this
+   */
+  public function setStore(string $store): self
+  {
+    $this->store = $store;
 
-        return $this;
-    }
+    return $this;
+  }
 
 
   /**
-     * @return Account
+     * @return Account|null
      */
-    public function getAccount(): Account
+    public function getAccount():? Account
     {
         return $this->account;
     }
 
+    /**
+     * @param string $source
+     *
+     * @return Permission|null
+     */
+    public function getPermissionBySource(string $source): ?Permission
+    {
+        foreach ($this->permissions as $permission) {
+            if ($permission->getSource() === $source) {
+                return $permission;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @param $transaction
+     * @param $state
+     *
+     * @return Payment|null
+     */
+    public function getPaymentByTransactionAndState($transaction, $state): ?Payment
+    {
+        foreach ($this->payments as $payment) {
+            if ($payment->getTransaction() === $transaction && $payment->getState() === $state) {
+                return $payment;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @param $shipmentId
+     *
+     * @return Shipment|null
+     */
+    public function getShipmentById($shipmentId): ?Shipment
+    {
+        foreach ($this->shipments as $shipment) {
+            if ($shipment->getShipmentId() === $shipmentId) {
+                return $shipment;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @return Address
+     */
+    public function getBillingAddress(): Address
+    {
+        return $this->billingAddress;
+    }
+
+    /**
+     * @param $type
+     *
+     * @return Notification|null
+     */
+    public function getNotificationByType($type): ?Notification
+    {
+        foreach ($this->notifications as $notification) {
+            if ($notification->getType() === $type) {
+                return $notification;
+            }
+        }
+
+        return null;
+    }
 }
