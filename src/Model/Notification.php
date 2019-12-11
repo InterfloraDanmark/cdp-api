@@ -4,6 +4,10 @@ namespace Interflora\CdpApi\Model;
 
 class Notification extends AbstractJsonSerializable
 {
+    public const TYPE_SMS = 'sms';
+
+    public const TYPE_EMAIL = 'email';
+
     /**
      * @var string
      */
@@ -24,6 +28,14 @@ class Notification extends AbstractJsonSerializable
         $this->type = $type;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
     }
 
     /**

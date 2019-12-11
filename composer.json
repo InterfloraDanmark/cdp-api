@@ -20,7 +20,8 @@
     "symfony/validator": ">=3.4",
     "symfony/cache": ">=3.4",
     "symfony/serializer": "3.4.*|4.3.*",
-    "symfony/property-access": "^5.0"
+    "symfony/property-access": "^5.0",
+    "ext-json": "*"
   },
   "autoload": {
     "psr-4" : {

@@ -544,5 +544,20 @@ class Item extends AbstractJsonSerializable
     return $this;
   }
 
+    /**
+     * @param $type
+     *
+     * @return Data|null
+     */
+    public function getCategoryByType($type): ?Data
+    {
+        foreach ($this->category as $category) {
+            if ($category->getType() === $type) {
+                return $category;
+            }
+        }
+
+        return null;
+    }
 
 }
