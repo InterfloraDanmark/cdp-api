@@ -26,4 +26,13 @@ class Data extends AbstractJsonSerializable
         $this->type = $type;
         $this->name = $name;
     }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
 }

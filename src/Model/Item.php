@@ -6,7 +6,7 @@ class Item extends AbstractJsonSerializable
 {
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $id;
 
@@ -115,7 +115,7 @@ class Item extends AbstractJsonSerializable
   /**
    * @return string
    */
-  public function getId(): string {
+  public function getId():? string {
     return $this->id;
   }
 
@@ -560,4 +560,13 @@ class Item extends AbstractJsonSerializable
         return null;
     }
 
+    /**
+     * Returns key by which items should be grouped and quantities summed
+     *
+     * @return string
+     */
+    public function getGroupKey()
+    {
+        return $this->sku . $this->price;
+    }
 }
