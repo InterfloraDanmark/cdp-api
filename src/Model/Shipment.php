@@ -608,10 +608,7 @@ class Shipment extends AbstractJsonSerializable
      */
     public function setItems(array $items): self
     {
-        $this->items = [];
-        foreach ($items as $item) {
-            $this->addItem($item);
-        }
+        $this->items = $items;
 
         return $this;
     }
