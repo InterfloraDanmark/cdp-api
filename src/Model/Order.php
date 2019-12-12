@@ -281,6 +281,14 @@ class Order extends AbstractJsonSerializable
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getAccountId(): string
+    {
+        return $this->accountId;
+    }
+
     public function hasAccountId(): bool
     {
         return $this->accountId !== null;
