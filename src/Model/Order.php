@@ -113,14 +113,14 @@ class Order extends AbstractJsonSerializable
     protected $notifications = [];
 
     /**
-     * @var Address
+     * @var Address|null
      */
     protected $billingAddress;
 
     /**
      * @var Shipment[]
      */
-    protected $shipments;
+    protected $shipments = [];
     /**
      * @var Permission[]
      */
@@ -129,7 +129,7 @@ class Order extends AbstractJsonSerializable
     /**
      * @var Payment[]
      */
-    protected $payments;
+    protected $payments = [];
 
     /**
      * @var string
@@ -668,9 +668,9 @@ class Order extends AbstractJsonSerializable
     }
 
     /**
-     * @return Address
+     * @return Address|null
      */
-    public function getBillingAddress(): Address
+    public function getBillingAddress():? Address
     {
         return $this->billingAddress;
     }
