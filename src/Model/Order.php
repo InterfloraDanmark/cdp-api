@@ -93,7 +93,7 @@ class Order extends AbstractJsonSerializable
     protected $orderStatus;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $orderTotal;
 
@@ -389,11 +389,11 @@ class Order extends AbstractJsonSerializable
     }
 
     /**
-     * @param string $orderTotal
+     * @param string|null $orderTotal
      *
      * @return $this
      */
-    public function setOrderTotal(string $orderTotal): self
+    public function setOrderTotal(?string $orderTotal): self
     {
         $this->orderTotal = $orderTotal;
 
