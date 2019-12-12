@@ -232,6 +232,22 @@ class CdpClient
     }
 
     /**
+     * @param string $uuid
+     *
+     * @return mixed|null
+     */
+    public function getBusinessById(string $uuid)
+    {
+        try {
+            $path = sprintf('%s/business/%s', self::API_ROOT, $uuid);
+            return json_decode($this->get($path)->getBody(), true);
+        } catch (RequestException $exception) {
+            // Account could not be retrieved, usually because of 404 - not found
+            return null;
+        }
+    }
+
+    /**
      * @param \Interflora\CdpApi\Model\Business $business
      *
      * @return mixed
