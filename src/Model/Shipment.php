@@ -620,27 +620,9 @@ class Shipment extends AbstractJsonSerializable
      */
     public function addItem(Item $item): self
     {
-        if (null !== $exsitingItem = $this->getItemByKey($item->getGroupKey())) {
-            $exsitingItem->setQuantity($exsitingItem->getQuantity() + $item->getQuantity());
-        } else {
-            $this->items[$item->getGroupKey()] = $item;
-        }
+        $this->items[] = $item;
 
         return $this;
-    }
-
-    /**
-     * @param $key
-     *
-     * @return Item|null
-     */
-    protected function getItemByKey($key): ?Item
-    {
-        if (array_key_exists($key, $this->items)) {
-            return $this->items[$key];
-        }
-
-        return null;
     }
 
     /**
