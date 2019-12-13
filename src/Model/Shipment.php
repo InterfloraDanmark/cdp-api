@@ -128,7 +128,7 @@ class Shipment extends AbstractJsonSerializable
     protected $florist;
 
     /**
-     * @var array
+     * @var array|null
      */
     protected $extra = [];
 
@@ -456,7 +456,7 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return Address
      */
-    public function getDeliveryAddress():? Address
+    public function getDeliveryAddress(): ?Address
     {
         return $this->deliveryAddress;
     }
@@ -628,7 +628,7 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return Florist
      */
-    public function getFlorist():? Florist
+    public function getFlorist(): ?Florist
     {
         return $this->florist;
     }
@@ -654,12 +654,15 @@ class Shipment extends AbstractJsonSerializable
     }
 
     /**
-     * @param array $extra
+     * @param array|null $extra
      *
      * @return self
      */
-    public function setExtra(array $extra): self
+    public function setExtra(?array $extra): self
     {
+        if ($extra === null) {
+            $extra = [];
+        }
         $this->extra = $extra;
 
         return $this;
