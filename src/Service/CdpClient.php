@@ -4,6 +4,7 @@ namespace Interflora\CdpApi\Service;
 
 use Interflora\CdpApi\Model\Account;
 use Interflora\CdpApi\Model\Business;
+use Interflora\CdpApi\Model\MarketingPermission;
 use Interflora\CdpApi\Model\Order;
 use Interflora\CdpApi\Traits\Loggable;
 use GuzzleHttp\Client;
@@ -318,6 +319,18 @@ class CdpClient
         }
 
         return $channelId;
+    }
+
+    /**
+     * @param \Interflora\CdpApi\Model\MarketingPermission $marketingPermission
+     *
+     * @return mixed
+     */
+    public function updateMarketingPermission(MarketingPermission $marketingPermission)
+    {
+        $path = sprintf('%s/marketingPermission/%s', self::API_ROOT, $marketingPermission->getId());
+        $result = $this->patch($path, $marketingPermission);
+        return json_decode($result->getBody(), true);
     }
 
     /**
