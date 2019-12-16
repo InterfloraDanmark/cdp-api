@@ -197,6 +197,22 @@ class CdpClient
     }
 
     /**
+     * @param string $uuid
+     *
+     * @return mixed|null
+     */
+    public function getAccountOrderHistory(string $uuid)
+    {
+        try {
+            $path = sprintf('%s/account/%s/orders', self::API_ROOT, $uuid);
+            return json_decode($this->get($path)->getBody(), true);
+        } catch (RequestException $exception) {
+            // Account could not be retrieved, usually because of 404 - not found
+            return null;
+        }
+    }
+
+    /**
      * @param \Interflora\CdpApi\Model\Account $account
      *
      * @return mixed

@@ -36,6 +36,11 @@ class Permission extends AbstractJsonSerializable
     protected $value;
 
     /**
+     * @var string
+     */
+    protected $granted;
+
+    /**
      * @return string|null
      */
     public function getId():? string
@@ -133,6 +138,24 @@ class Permission extends AbstractJsonSerializable
         $this->value = $value;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGranted(): string {
+        return $this->granted;
+    }
+
+    /**
+     * @param string $granted
+     *
+     * @return self
+     */
+    public function setGranted(string $granted): self {
+        $this->granted = $granted;
+
+      return $this;
     }
 
 
