@@ -84,7 +84,7 @@ class Business extends AbstractJsonSerializable {
    *
    * @return \Interflora\CdpApi\Model\Business
    */
-  public function setName(string $name): self {
+  public function setName(?string $name): self {
     $this->name = $name;
 
     return $this;
@@ -102,7 +102,7 @@ class Business extends AbstractJsonSerializable {
    *
    * @return \Interflora\CdpApi\Model\Business
    */
-  public function setTelephone(string $telephone): self {
+  public function setTelephone(?string $telephone): self {
     $this->telephone = $telephone;
 
     return $this;
@@ -120,7 +120,7 @@ class Business extends AbstractJsonSerializable {
    *
    * @return \Interflora\CdpApi\Model\Business
    */
-  public function setFax(string $fax): self {
+  public function setFax(?string $fax): self {
     $this->fax = $fax;
 
     return $this;
@@ -174,7 +174,7 @@ class Business extends AbstractJsonSerializable {
    *
    * @return \Interflora\CdpApi\Model\Business
    */
-  public function setEanNumber(string $eanNumber): self {
+  public function setEanNumber(?string $eanNumber): self {
     $this->eanNumber = $eanNumber;
 
     return $this;
@@ -192,7 +192,7 @@ class Business extends AbstractJsonSerializable {
    *
    * @return \Interflora\CdpApi\Model\Business
    */
-  public function setCvrNumber(string $cvrNumber): self {
+  public function setCvrNumber(?string $cvrNumber): self {
     $this->cvrNumber = $cvrNumber;
 
     return $this;
@@ -210,7 +210,7 @@ class Business extends AbstractJsonSerializable {
    *
    * @return \Interflora\CdpApi\Model\Business
    */
-  public function setCompanyReference(string $companyReference): self {
+  public function setCompanyReference(?string $companyReference): self {
     $this->companyReference = $companyReference;
 
     return $this;
@@ -228,7 +228,7 @@ class Business extends AbstractJsonSerializable {
    *
    * @return \Interflora\CdpApi\Model\Business
    */
-  public function setAddress(\Interflora\CdpApi\Model\Address $address): self {
+  public function setAddress(?\Interflora\CdpApi\Model\Address $address): self {
     $this->address = $address;
 
     return $this;
