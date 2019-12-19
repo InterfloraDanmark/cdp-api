@@ -45,7 +45,7 @@ class MarketingPermission extends AbstractJsonSerializable
     protected $value;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $granted;
 
@@ -176,18 +176,18 @@ class MarketingPermission extends AbstractJsonSerializable
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getGranted(): string {
+    public function getGranted():? string {
         return $this->granted;
     }
 
     /**
-     * @param string $granted
+     * @param string|null $granted
      *
      * @return self
      */
-    public function setGranted(string $granted): self {
+    public function setGranted(?string $granted): self {
         $this->granted = $granted;
 
       return $this;
