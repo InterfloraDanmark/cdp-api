@@ -176,6 +176,13 @@ class Address extends AbstractJsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getOrganization(): ?string {
+        return $this->organization;
+    }
+
+    /**
      * @param string $organization
      *
      * @return $this

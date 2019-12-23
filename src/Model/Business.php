@@ -217,9 +217,9 @@ class Business extends AbstractJsonSerializable {
   }
 
   /**
-   * @return \Interflora\CdpApi\Model\Address
+   * @return \Interflora\CdpApi\Model\Address|null
    */
-  public function getAddress(): \Interflora\CdpApi\Model\Address {
+  public function getAddress(): ?\Interflora\CdpApi\Model\Address {
     return $this->address;
   }
 

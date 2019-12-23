@@ -30,10 +30,10 @@ class Decoder {
             ->setPwd1($response['pwd1'])
             ->setTelephone($response['telephone'])
             ->setGender($response['gender']);
-        if ($response['address']) {
+        if (!empty($response['address'])) {
             $account->setAddress($this->decodeAddressResponse($response['address']));
         }
-        if ($response['business']) {
+        if (!empty($response['business'])) {
             $account->setBusiness($this->decodeBusinessResponse($response['business']));
         }
         return $account;
