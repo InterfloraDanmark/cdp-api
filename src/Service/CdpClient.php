@@ -359,7 +359,6 @@ class CdpClient
     {
         $options = $this->getOptions($data);
         $this->getLogger()->notice('PUT request to uri: ' . $uri);
-        $this->getLogger()->notice(json_encode($options));
 
         return $this->client->put($uri, $options);
     }
@@ -374,7 +373,6 @@ class CdpClient
     {
         $options = $this->getOptions($data);
         $this->getLogger()->notice('PUT request to uri: ' . $uri);
-        $this->getLogger()->notice(json_encode($options));
 
         return $this->client->patch($uri, $options);
     }
@@ -389,7 +387,6 @@ class CdpClient
     {
         $options = $this->getOptions($data);
         $this->getLogger()->notice('POST request to uri: ' . $uri);
-        $this->getLogger()->notice(json_encode($options));
 
         return $this->client->post($uri, $options);
     }
@@ -404,7 +401,6 @@ class CdpClient
     {
         $options = $this->getOptions($data);
         $this->getLogger()->notice('GET request to uri: ' . $uri);
-        $this->getLogger()->notice(json_encode($options));
 
         return $this->client->get($uri, $options);
     }
@@ -419,7 +415,6 @@ class CdpClient
     {
         $options = $this->getOptions(null);
         $this->getLogger()->notice('DELETE request to uri: ' . $uri);
-        $this->getLogger()->notice(json_encode($options));
 
         return $this->client->delete($uri, $options);
     }
