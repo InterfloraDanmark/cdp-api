@@ -47,9 +47,9 @@ class Florist extends AbstractJsonSerializable
   }
 
   /**
-   * @return string
+   * @return string|null
    */
-  public function getName(): string {
+  public function getName(): ?string {
     return $this->name;
   }
 
@@ -83,9 +83,9 @@ class Florist extends AbstractJsonSerializable
   }
 
   /**
-   * @return string
+   * @return string|null
    */
-  public function getTelephone(): string {
+  public function getTelephone(): ?string {
     return $this->telephone;
   }
 

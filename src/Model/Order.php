@@ -15,7 +15,7 @@ class Order extends AbstractJsonSerializable
      */
     private const TYPE_MAP = [
         'interflora.dk' => 'web',
-        'mobile'        => 'mobile',
+        'mobile'        => 'web',
         'ifos'          => 'ifos',
     ];
 
@@ -24,8 +24,8 @@ class Order extends AbstractJsonSerializable
      */
     public const MARKETPLACE_MAP = [
         'interflora.dk' => 'Interflora',
-        'mobile'        => 'mobile',
-        'ifos'          => 'ifos',
+        'mobile'        => 'Interflora',
+        'ifos'          => 'Interflora',
     ];
 
     /**
@@ -532,7 +532,7 @@ class Order extends AbstractJsonSerializable
     public function addMarketplaceBySource(string $source)
     {
         if (array_key_exists($source, self::MARKETPLACE_MAP)) {
-            $this->marketplace[] = new MarketPlace(self::MARKETPLACE_MAP[$source]);
+            $this->marketplace[$source] = new MarketPlace(self::MARKETPLACE_MAP[$source]);
         }
 
         return $this;
@@ -658,6 +658,23 @@ class Order extends AbstractJsonSerializable
 
         return null;
     }
+
+    /**
+     * @param $transaction
+     *
+     * @return Payment|null
+     */
+    public function getPaymentByTransaction($transaction): ?Payment
+    {
+        foreach ($this->payments as $payment) {
+            if ($payment->getTransaction() === $transaction) {
+                return $payment;
+            }
+        }
+
+        return null;
+    }
+
 
     /**
      * @param $shipmentId
