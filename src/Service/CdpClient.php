@@ -5,6 +5,7 @@ namespace Interflora\CdpApi\Service;
 use Interflora\CdpApi\Model\Account;
 use Interflora\CdpApi\Model\Business;
 use Interflora\CdpApi\Model\MarketingPermission;
+use Interflora\CdpApi\Model\Occasion;
 use Interflora\CdpApi\Model\Order;
 use Interflora\CdpApi\Traits\Loggable;
 use GuzzleHttp\Client;
@@ -115,6 +116,78 @@ class CdpClient
             // Order could not be retrieved, usually because of 404 - not found
             return null;
         }
+    }
+
+    /**
+     * @param \Interflora\CdpApi\Model\Occasion $occasion
+     *
+     * @return mixed|null
+     */
+    public function getOccasion(Occasion $occasion)
+    {
+        try {
+            $path = sprintf('%s/occasion/%s', self::API_ROOT, $occasion->getId());
+            $result = $this->get($path);
+            $content = json_decode($result->getBody(), true);
+            return $content;
+
+        } catch (RequestException $exception) {
+            // Order could not be retrieved, usually because of 404 - not found
+            return null;
+        }
+    }
+
+    /**
+     * @param \Interflora\CdpApi\Model\MarketingPermission $permission
+     *
+     * @return mixed|null
+     */
+    public function getPermission(MarketingPermission $permission)
+    {
+        try {
+            $path = sprintf('%s/permission/%s', self::API_ROOT, $permission->getId());
+            $result = $this->get($path);
+            $content = json_decode($result->getBody(), true);
+            return $content;
+
+        } catch (RequestException $exception) {
+            // Order could not be retrieved, usually because of 404 - not found
+            return null;
+        }
+    }
+
+    /**
+     * @param \Interflora\CdpApi\Model\Account $account
+     *
+     * @return mixed|null
+     */
+    public function getOccasions(Account $account)
+    {
+        try {
+            $path = sprintf('%s/account/%s/occasions', self::API_ROOT, $account->getId());
+            $result = $this->get($path);
+            return json_decode($result->getBody(), true);
+        } catch (RequestException $exception) {
+            // Order could not be retrieved, usually because of 404 - not found
+            return null;
+        }
+    }
+
+    /**
+     * @param \Interflora\CdpApi\Model\Account $account
+     *
+     * @return mixed|null
+     */
+    public function getPermissions(Account $account)
+    {
+      try {
+          $path = sprintf('%s/account/%s/permissions', self::API_ROOT, $account->getId());
+          $result = $this->get($path);
+          return json_decode($result->getBody(), true);
+      } catch (RequestException $exception) {
+          // Order could not be retrieved, usually because of 404 - not found
+          return null;
+      }
     }
 
     /**
@@ -296,6 +369,42 @@ class CdpClient
     public function deleteBusiness($uuid)
     {
         $path = sprintf('%s/business/%s', self::API_ROOT, $uuid);
+        $result = $this->delete($path);
+        return json_decode($result->getBody(), true);
+    }
+
+    /**
+     * @param \Interflora\CdpApi\Model\Occasion $occasion
+     *
+     * @return mixed
+     */
+    public function createOccasion(Occasion $occasion)
+    {
+        $path = sprintf('%s/occasion', self::API_ROOT);
+        $result = $this->post($path, $occasion);
+        return json_decode($result->getBody(), true);
+    }
+
+    /**
+     * @param \Interflora\CdpApi\Model\Occasion $occasion
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function updateOccasion(Occasion $occasion)
+    {
+        $path = sprintf('%s/occasion/%s', self::API_ROOT, $occasion->getId());
+        $result = $this->patch($path, $occasion);
+        return json_decode($result->getBody(), true);
+    }
+
+    /**
+     * @param $uuid
+     *
+     * @return mixed
+     */
+    public function deleteOccasion($uuid)
+    {
+        $path = sprintf('%s/occasion/%s', self::API_ROOT, $uuid);
         $result = $this->delete($path);
         return json_decode($result->getBody(), true);
     }
