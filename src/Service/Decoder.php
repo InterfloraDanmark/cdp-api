@@ -5,6 +5,9 @@ namespace Interflora\CdpApi\Service;
 use Interflora\CdpApi\Model\Account;
 use Interflora\CdpApi\Model\Address;
 use Interflora\CdpApi\Model\Business;
+use Interflora\CdpApi\Model\MarketingPermission;
+use Interflora\CdpApi\Model\Occasion;
+use Interflora\CdpApi\Model\OccasionPreference;
 
 /**
  * Class Decoder
@@ -35,6 +38,9 @@ class Decoder {
         }
         if (!empty($response['business'])) {
             $account->setBusiness($this->decodeBusinessResponse($response['business']));
+        }
+        if (!empty($response['marketingPermissions'])) {
+            $account->setMarketingPermissions($this->decodePermissions($response['marketingPermissions']));
         }
         return $account;
     }
@@ -79,4 +85,59 @@ class Decoder {
         }
         return $business;
     }
+
+  /**
+   * @param array $response
+   *
+   * @return array
+   */
+  public function decodePermissions(array $response): array {
+    $permissions = [];
+    foreach ($response as $result) {
+      $permission = new MarketingPermission();
+      $permission->setId($result['id'])
+        ->setValue($result['value'])
+        ->setSource($result['source'])
+        ->setGranted($result['granted'])
+        ->setOwner($result['owner'])
+        ->setChannelId($result['channelId']);
+      $permissions[] =  $permission;
+    }
+    return $permissions;
+  }
+
+  /**
+   * @param array $response
+   *
+   * @return array
+   */
+  public function decodeOccasions(array $response): array {
+    $occasions = [];
+    foreach ($response as $result) {
+      $occasion = new Occasion();
+      $occasion->setId($result['id'] ?? '')
+        ->setName($result['name'] ?? '')
+        ->setAccountId($result['accountId'] ?? '')
+        ->setTargetName($result['targetName'] ?? '')
+        ->setOccasionType($result['occasionType'] ?? '')
+        ->setDate($result['date'] ?? '')
+        ->setDateNext($result['dateNext'] ?? '')
+        ->setSingle($result['single'] ?? false)
+        ->setCommemoration($result['commemoration'] ?? false)
+        ->setDeleted($result['deleted'] ?? false);
+      $preferences = [];
+      foreach ($result['occasionPreference'] as $preference) {
+        $occasionPreference = new OccasionPreference();
+        $occasionPreference
+          ->setId($preference['id'] ?? '')
+          ->setName($preference['name'] ?? '')
+          ->setSelected($preference['selected'] ?? '')
+          ->setMain($preference['main'] ?? '');
+        $preferences[] = $occasionPreference;
+      }
+      $occasion->setOccasionPreferences($preferences);
+      $occasions[] =  $occasion;
+    }
+    return $occasions;
+  }
 }
