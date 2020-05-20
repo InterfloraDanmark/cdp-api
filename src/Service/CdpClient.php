@@ -549,4 +549,23 @@ class CdpClient
 
         return $options;
     }
+
+    /**
+     * Send email to given order.
+     *
+     * @param \Interflora\CdpApi\Model\Order $order
+     *  Order data.
+     *
+     * @return mixed|null
+     */
+    public function sendEmailForOrder(Order $order)
+    {
+        try {
+            $path = sprintf('%s/agillic/%s', self::API_ROOT, $order->getId());
+            $result = $this->put($path, $order);
+            return json_decode($result->getBody(), true);
+        } catch (RequestException $exception) {
+            return null;
+        }
+    }
 }
