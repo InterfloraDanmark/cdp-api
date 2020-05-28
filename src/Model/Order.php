@@ -93,7 +93,7 @@ class Order extends AbstractJsonSerializable
     protected $orderStatus;
 
     /**
-     * @var string|null
+     * @var string|integer|null
      */
     protected $orderTotal;
 
