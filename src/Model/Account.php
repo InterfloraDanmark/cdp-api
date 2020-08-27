@@ -118,7 +118,7 @@ class Account extends AbstractJsonSerializable {
     /**
      * @return string
      */
-    public function getFirstName(): string {
+    public function getFirstName(): ?string {
         return $this->firstName;
     }
 
@@ -136,7 +136,7 @@ class Account extends AbstractJsonSerializable {
     /**
      * @return string
      */
-    public function getLastName(): string {
+    public function getLastName(): ?string {
         return $this->lastName;
     }
 
