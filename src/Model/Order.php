@@ -14,18 +14,22 @@ class Order extends AbstractJsonSerializable
      * @TODO check mappings
      */
     private const TYPE_MAP = [
-        'interflora.dk' => 'web',
-        'mobile'        => 'web',
-        'ifos'          => 'ifos',
+        'interflora.dk'   => 'web',
+        'mobile'          => 'web',
+        'ifos'            => 'ifos',
+        'customerService' => 'ifos',
+        'internal'        => 'ifos',
     ];
 
     /**
      * @TODO check mappings
      */
     public const MARKETPLACE_MAP = [
-        'interflora.dk' => 'Interflora',
-        'mobile'        => 'Interflora',
-        'ifos'          => 'Interflora',
+        'interflora.dk'   => 'Interflora',
+        'mobile'          => 'Interflora',
+        'ifos'            => 'Interflora',
+        'customerService' => 'Interflora',
+        'internal'        => 'Interflora',
     ];
 
     /**
