@@ -32,9 +32,11 @@ class Order extends AbstractJsonSerializable
      * @TODO check mappings
      */
     private const STORE_MAP = [
-        'interflora.dk' => 'online',
-        'mobile'        => 'mobile',
-        'ifos'          => 'ifos',
+        'interflora.dk'   => 'online',
+        'mobile'          => 'mobile',
+        'ifos'            => 'ifos',
+        'customerService' => 'customerService',
+        'internal'        => 'internal',
     ];
 
     /**
