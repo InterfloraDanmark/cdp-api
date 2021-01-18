@@ -158,6 +158,11 @@ class Order extends AbstractJsonSerializable
     protected $extra;
 
     /**
+     * @var Tag[]
+     */
+    protected $tags;
+
+    /**
      * @param string|null $id
      *
      * @return $this
@@ -630,6 +635,24 @@ class Order extends AbstractJsonSerializable
     public function getAccount():? Account
     {
         return $this->account;
+    }
+
+    /**
+     * @return \Interflora\CdpApi\Model\Tag[]
+     */
+    public function getTags(): array {
+        return $this->tags;
+    }
+
+    /**
+     * @param \Interflora\CdpApi\Model\Tag[] $tags
+     *
+     * @return self
+     */
+    public function setTags(array $tags): self {
+        $this->tags = $tags;
+
+        return $this;
     }
 
     /**
