@@ -45,7 +45,7 @@ abstract class AbstractJsonSerializable implements JsonSerializable
                     $data[$key] = $value->format('Y-m-d\TH:i:s\Z');
                     continue;
                 }
-                if ($value) {
+                if (isset($value)) {
                   $data[$key] = $value;
                 }
             }
