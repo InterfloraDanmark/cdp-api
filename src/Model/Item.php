@@ -127,7 +127,7 @@ class Item extends AbstractJsonSerializable
      * @return string
      */
     public function getId():? string {
-      return $this->id;
+        return $this->id;
     }
 
     /**
@@ -136,16 +136,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setId(string $id): self {
-      $this->id = $id;
+        $this->id = $id;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return string
      */
     public function getName(): string {
-      return $this->name;
+        return $this->name;
     }
 
     /**
@@ -154,16 +154,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setName(string $name): self {
-      $this->name = $name;
+        $this->name = $name;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return string
      */
     public function getSku(): string {
-      return $this->sku;
+        return $this->sku;
     }
 
     /**
@@ -172,16 +172,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setSku(string $sku): self {
-      $this->sku = $sku;
+        $this->sku = $sku;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return string
      */
     public function getType(): string {
-      return $this->type;
+        return $this->type;
     }
 
     /**
@@ -190,16 +190,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setType(string $type): self {
-      $this->type = $type;
+        $this->type = $type;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return float
      */
     public function getPrice(): float {
-      return $this->price;
+        return $this->price;
     }
 
     /**
@@ -208,16 +208,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setPrice(float $price): self {
-      $this->price = $price;
+        $this->price = $price;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return float
      */
     public function getProfit(): float {
-      return $this->profit;
+        return $this->profit;
     }
 
     /**
@@ -226,16 +226,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setProfit(float $profit): self {
-      $this->profit = $profit;
+        $this->profit = $profit;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return int
      */
     public function getQuantity(): int {
-      return $this->quantity;
+        return $this->quantity;
     }
 
     /**
@@ -244,16 +244,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setQuantity(int $quantity): self {
-      $this->quantity = $quantity;
+        $this->quantity = $quantity;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return float
      */
     public function getTotal(): float {
-      return $this->total;
+        return $this->total;
     }
 
     /**
@@ -262,16 +262,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setTotal(float $total): self {
-      $this->total = $total;
+        $this->total = $total;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return string
      */
     public function getUrl(): string {
-      return $this->url;
+        return $this->url;
     }
 
     /**
@@ -280,16 +280,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setUrl(string $url): self {
-      $this->url = $url;
+        $this->url = $url;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return string
      */
     public function getImageUrl(): string {
-      return $this->imageUrl;
+        return $this->imageUrl;
     }
 
     /**
@@ -298,16 +298,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setImageUrl(string $imageUrl): self {
-      $this->imageUrl = $imageUrl;
+        $this->imageUrl = $imageUrl;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return array|\Interflora\CdpApi\Model\Item[]
      */
     public function getSubItems(): array {
-      return $this->subItems;
+        return $this->subItems;
     }
 
     /**
@@ -316,16 +316,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setSubItems(array $subItems): self {
-      $this->subItems = $subItems;
+        $this->subItems = $subItems;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return array|\Interflora\CdpApi\Model\Data[]
      */
     public function getCategory() {
-      return $this->category;
+        return $this->category;
     }
 
     /**
@@ -334,16 +334,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setCategory($category): self {
-      $this->category = $category;
+        $this->category = $category;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return array|\Interflora\CdpApi\Model\Data[]
      */
     public function getOccation() {
-      return $this->occation;
+        return $this->occation;
     }
 
     /**
@@ -352,16 +352,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setOccation($occation): self {
-      $this->occation = $occation;
+        $this->occation = $occation;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return array|\Interflora\CdpApi\Model\Data[]
      */
     public function getReceiver() {
-      return $this->receiver;
+        return $this->receiver;
     }
 
     /**
@@ -370,16 +370,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setReceiver($receiver): self {
-      $this->receiver = $receiver;
+        $this->receiver = $receiver;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return array|\Interflora\CdpApi\Model\Data[]
      */
     public function getColour() {
-      return $this->colour;
+        return $this->colour;
     }
 
     /**
@@ -388,16 +388,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setColour($colour): self {
-      $this->colour = $colour;
+        $this->colour = $colour;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return string|null
      */
     public function getMarketplace(): ?string {
-      return $this->marketplace;
+        return $this->marketplace;
     }
 
     /**
@@ -406,16 +406,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setMarketplace(string $marketplace): self {
-      $this->marketplace = $marketplace;
+        $this->marketplace = $marketplace;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return string
      */
     public function getSize(): string {
-      return $this->size;
+        return $this->size;
     }
 
     /**
@@ -424,16 +424,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setSize(string $size): self {
-      $this->size = $size;
+        $this->size = $size;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return bool
      */
     public function isFlowerProduct(): bool {
-      return $this->flowerProduct;
+        return $this->flowerProduct;
     }
 
     /**
@@ -442,16 +442,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setFlowerProduct(bool $flowerProduct): self {
-      $this->flowerProduct = $flowerProduct;
+        $this->flowerProduct = $flowerProduct;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return array|string[]
      */
     public function getRibbonTexts() {
-      return $this->ribbonTexts;
+        return $this->ribbonTexts;
     }
 
     /**
@@ -460,16 +460,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setRibbonTexts($ribbonTexts): self {
-      $this->ribbonTexts = $ribbonTexts;
+        $this->ribbonTexts = $ribbonTexts;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return string
      */
     public function getCardFrontText(): string {
-      return $this->cardFrontText;
+        return $this->cardFrontText;
     }
 
     /**
@@ -478,16 +478,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setCardFrontText(string $cardFrontText): self {
-      $this->cardFrontText = $cardFrontText;
+        $this->cardFrontText = $cardFrontText;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return string
      */
     public function getCardBackText(): string {
-      return $this->cardBackText;
+        return $this->cardBackText;
     }
 
     /**
@@ -496,16 +496,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setCardBackText(string $cardBackText): self {
-      $this->cardBackText = $cardBackText;
+        $this->cardBackText = $cardBackText;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return string
      */
     public function getCardTextFont(): string {
-      return $this->cardTextFont;
+        return $this->cardTextFont;
     }
 
     /**
@@ -514,16 +514,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setCardTextFont(string $cardTextFont): self {
-      $this->cardTextFont = $cardTextFont;
+        $this->cardTextFont = $cardTextFont;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return string
      */
     public function getCardTextColour(): string {
-      return $this->cardTextColour;
+        return $this->cardTextColour;
     }
 
     /**
@@ -532,16 +532,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setCardTextColour(string $cardTextColour): self {
-      $this->cardTextColour = $cardTextColour;
+        $this->cardTextColour = $cardTextColour;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return string
      */
     public function getCardImageUrl(): string {
-      return $this->cardImageUrl;
+        return $this->cardImageUrl;
     }
 
     /**
@@ -550,16 +550,16 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setCardImageUrl(string $cardImageUrl): self {
-      $this->cardImageUrl = $cardImageUrl;
+        $this->cardImageUrl = $cardImageUrl;
 
-      return $this;
+        return $this;
     }
 
     /**
      * @return string
      */
     public function getCardPdfUrl(): string {
-      return $this->cardPdfUrl;
+        return $this->cardPdfUrl;
     }
 
     /**
@@ -568,9 +568,9 @@ class Item extends AbstractJsonSerializable
      * @return self
      */
     public function setCardPdfUrl(string $cardPdfUrl): self {
-      $this->cardPdfUrl = $cardPdfUrl;
+        $this->cardPdfUrl = $cardPdfUrl;
 
-      return $this;
+        return $this;
     }
 
     /**
