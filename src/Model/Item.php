@@ -322,6 +322,13 @@ class Item extends AbstractJsonSerializable
     }
 
     /**
+     * @return bool
+     */
+    public function hasSubItems(): bool {
+        return ($this->subItems !== NULL && count($this->subItems) > 0);
+    }
+
+    /**
      * @return array|\Interflora\CdpApi\Model\Data[]
      */
     public function getCategory() {
