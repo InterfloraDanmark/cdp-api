@@ -669,6 +669,14 @@ class Shipment extends AbstractJsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getSpecialRequest(): string
+    {
+        return $this->specialRequest;
+    }
+
+    /**
      * @param string $specialRequest
      *
      * @return $this
@@ -692,6 +700,14 @@ class Shipment extends AbstractJsonSerializable
         foreach ($this->items as $item) {
             if ($item->getSku() === $sku && $item->getPrice() === $price && $item->getQuantity() === $quantity) {
                 return $item;
+            }
+            if ($item->hasSubItems()) {
+                $subItems = $item->getSubItems();
+                foreach ($subItems as $subItem) {
+                    if ($subItem->getSku() === $sku && $subItem->getPrice() === $price && $subItem->getQuantity() === $quantity) {
+                        return $subItem;
+                    }
+                }
             }
         }
 

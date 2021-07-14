@@ -50,5 +50,12 @@ class Notification extends AbstractJsonSerializable
         return $this;
     }
 
-
+    /**
+     *
+     * @return boolean
+     */
+    public function getValue(): bool
+    {
+        return $this->value;
+    }
 }

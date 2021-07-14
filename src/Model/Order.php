@@ -127,6 +127,7 @@ class Order extends AbstractJsonSerializable
      * @var Shipment[]
      */
     protected $shipments = [];
+
     /**
      * @var Permission[]
      */
@@ -295,7 +296,7 @@ class Order extends AbstractJsonSerializable
     /**
      * @return string
      */
-    public function getAccountId(): string
+    public function getAccountId(): ?string
     {
         return $this->accountId;
     }
@@ -456,6 +457,14 @@ class Order extends AbstractJsonSerializable
     }
 
     /**
+     * return awway
+     */
+    public function getShipments(): array
+    {
+        return $this->shipments;
+    }
+
+    /**
      * @param Shipment[] $shipments
      *
      * @return $this
@@ -465,6 +474,14 @@ class Order extends AbstractJsonSerializable
         $this->shipments = $shipments;
 
         return $this;
+    }
+
+    /**
+     * @return Permission[]
+     */
+    public function getPermissions(): array
+    {
+        return $this->permissions;
     }
 
     /**
