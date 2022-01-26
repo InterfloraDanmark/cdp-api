@@ -137,7 +137,7 @@ class Item extends AbstractJsonSerializable
 
 
   /**
-   * @var []Tag
+   * @var Tag[]
    */
     protected $segmentCategories = [];
 
