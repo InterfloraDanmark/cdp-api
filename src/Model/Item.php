@@ -135,6 +135,12 @@ class Item extends AbstractJsonSerializable
      */
     protected $cardPdfUrl = '';
 
+
+  /**
+   * @var []Tag
+   */
+    protected $segmentCategories = [];
+
     /**
      * @return string
      */
@@ -687,6 +693,37 @@ class Item extends AbstractJsonSerializable
     public function getGroupKey()
     {
         return $this->sku.$this->price;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSegmentCategories(): array
+    {
+      return $this->segmentCategories;
+    }
+
+    /**
+     * @param mixed $segmentCategories
+     *
+     * @return $this
+     */
+    public function setSegmentCategories(array $segmentCategories): self
+    {
+      $this->segmentCategories = $segmentCategories;
+
+      return $this;
+    }
+
+    /**
+     * @param Tag $category
+     * @return $this
+     */
+    public function addSegmentCategory(Tag $category): self
+    {
+      $this->segmentCategories[] = $category;
+
+      return $this;
     }
 
 }
