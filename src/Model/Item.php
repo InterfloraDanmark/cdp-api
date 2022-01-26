@@ -139,7 +139,7 @@ class Item extends AbstractJsonSerializable
   /**
    * @var Tag[]
    */
-    protected $segmentCategories = [];
+    protected $segment = [];
 
     /**
      * @return string
@@ -698,19 +698,19 @@ class Item extends AbstractJsonSerializable
     /**
      * @return mixed
      */
-    public function getSegmentCategories(): array
+    public function getSegment(): array
     {
-      return $this->segmentCategories;
+      return $this->segment;
     }
 
     /**
-     * @param mixed $segmentCategories
+     * @param mixed $segment
      *
      * @return $this
      */
-    public function setSegmentCategories(array $segmentCategories): self
+    public function setSegment(array $segment): self
     {
-      $this->segmentCategories = $segmentCategories;
+      $this->segment = $segment;
 
       return $this;
     }
@@ -719,9 +719,9 @@ class Item extends AbstractJsonSerializable
      * @param Tag $category
      * @return $this
      */
-    public function addSegmentCategory(Tag $category): self
+    public function addSegment(Tag $category): self
     {
-      $this->segmentCategories[] = $category;
+      $this->segment[] = $category;
 
       return $this;
     }
