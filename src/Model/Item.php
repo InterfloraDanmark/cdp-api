@@ -716,10 +716,10 @@ class Item extends AbstractJsonSerializable
     }
 
     /**
-     * @param Tag $category
+     * @param Data $category
      * @return $this
      */
-    public function addSegment(Tag $category): self
+    public function addSegment(Data $category): self
     {
       $this->segment[] = $category;
 
