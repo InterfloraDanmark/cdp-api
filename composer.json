@@ -16,7 +16,7 @@
   ],
   "require": {
     "php": ">=7.2",
-    "guzzlehttp/guzzle": "^6.2",
+    "guzzlehttp/guzzle": "^6.2 || ^7.0",
     "symfony/validator": ">=3.4",
     "symfony/cache": ">=3.4",
     "symfony/serializer": "3.4.*|4.3.*|4.4.*|5.4.*",
