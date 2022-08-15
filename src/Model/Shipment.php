@@ -137,6 +137,12 @@ class Shipment extends AbstractJsonSerializable
      */
     protected $specialRequest;
 
+
+  /**
+   * @var string
+   */
+    protected $driverComment;
+
     /**
      * @return string
      */
@@ -686,6 +692,21 @@ class Shipment extends AbstractJsonSerializable
         $this->specialRequest = $specialRequest;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDriverComment(): string {
+      return $this->driverComment;
+    }
+
+    /**
+     * @param string $driverComment
+     */
+    public function setDriverComment(string $driverComment): self {
+      $this->driverComment = $driverComment;
+      return $this;
     }
 
     /**
