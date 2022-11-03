@@ -144,6 +144,11 @@ class Shipment extends AbstractJsonSerializable
     protected $driverComment;
 
     /**
+     * @var array 
+     */
+    protected array $vouchers;
+    
+    /**
      * @return string
      */
     public function getId(): string
@@ -709,6 +714,23 @@ class Shipment extends AbstractJsonSerializable
       return $this;
     }
 
+    /**
+     * @return array
+     */
+    public function getVouchers(): array {
+      return $this->vouchers;
+    }
+
+    /**
+     * @param array $vouchers
+     *
+     * @return Shipment
+     */
+    public function setVouchers(array $vouchers): Shipment {
+      $this->vouchers = $vouchers;
+      return $this;
+    }
+    
     /**
      * @param $sku
      * @param $price
