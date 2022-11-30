@@ -137,17 +137,22 @@ class Shipment extends AbstractJsonSerializable
      */
     protected $specialRequest;
 
+    /**
+     * WORKAROUND CJ-189
+     * @var string
+     */
+    protected $floristId;
 
-  /**
-   * @var string
-   */
+    /**
+     * @var string
+     */
     protected $driverComment;
 
     /**
-     * @var array 
+     * @var array
      */
     protected array $vouchers;
-    
+
     /**
      * @return string
      */
@@ -702,6 +707,24 @@ class Shipment extends AbstractJsonSerializable
     /**
      * @return string
      */
+    public function getFloristId(): string
+    {
+        return $this->floristId;
+    }
+
+    /**
+     * @param string $floristId
+     */
+    public function setFloristId(string $floristId): self
+    {
+        $this->floristId = $floristId;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
     public function getDriverComment(): string {
       return $this->driverComment;
     }
@@ -730,7 +753,7 @@ class Shipment extends AbstractJsonSerializable
       $this->vouchers = $vouchers;
       return $this;
     }
-    
+
     /**
      * @param $sku
      * @param $price
