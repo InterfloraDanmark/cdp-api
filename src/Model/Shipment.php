@@ -138,6 +138,12 @@ class Shipment extends AbstractJsonSerializable
     protected $specialRequest;
 
     /**
+     * WORKAROUND CJ-189
+     * @var string
+     */
+    protected $floristId;
+
+    /**
      * @return string
      */
     public function getId(): string
@@ -684,6 +690,24 @@ class Shipment extends AbstractJsonSerializable
     public function setSpecialRequest(string $specialRequest): self
     {
         $this->specialRequest = $specialRequest;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFloristId(): string
+    {
+        return $this->floristId;
+    }
+
+    /**
+     * @param string $floristId
+     */
+    public function setFloristId(string $floristId): self
+    {
+        $this->floristId = $floristId;
 
         return $this;
     }
