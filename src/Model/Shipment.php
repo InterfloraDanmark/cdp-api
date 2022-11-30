@@ -144,6 +144,16 @@ class Shipment extends AbstractJsonSerializable
     protected $floristId;
 
     /**
+     * @var string
+     */
+    protected $driverComment;
+
+    /**
+     * @var array
+     */
+    protected array $vouchers;
+
+    /**
      * @return string
      */
     public function getId(): string
@@ -710,6 +720,38 @@ class Shipment extends AbstractJsonSerializable
         $this->floristId = $floristId;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDriverComment(): string {
+      return $this->driverComment;
+    }
+
+    /**
+     * @param string $driverComment
+     */
+    public function setDriverComment(string $driverComment): self {
+      $this->driverComment = $driverComment;
+      return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getVouchers(): array {
+      return $this->vouchers;
+    }
+
+    /**
+     * @param array $vouchers
+     *
+     * @return Shipment
+     */
+    public function setVouchers(array $vouchers): Shipment {
+      $this->vouchers = $vouchers;
+      return $this;
     }
 
     /**

@@ -164,6 +164,11 @@ class Order extends AbstractJsonSerializable
     protected $tags;
 
     /**
+     * @var array 
+     */
+    protected array $vouchers;
+    
+    /**
      * @param string|null $id
      *
      * @return $this
@@ -670,6 +675,23 @@ class Order extends AbstractJsonSerializable
         $this->tags = $tags;
 
         return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getVouchers(): array {
+      return $this->vouchers;
+    }
+
+    /**
+     * @param array $vouchers
+     *
+     * @return Order
+     */
+    public function setVouchers(array $vouchers): Order {
+      $this->vouchers = $vouchers;
+      return $this;
     }
 
     /**
