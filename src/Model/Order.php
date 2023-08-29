@@ -164,10 +164,15 @@ class Order extends AbstractJsonSerializable
     protected $tags;
 
     /**
-     * @var array 
+     * @var array
      */
     protected array $vouchers;
-    
+
+  /**
+   * @var bool $marketingPermission
+   */
+    protected bool $marketingPermission;
+
     /**
      * @param string|null $id
      *
@@ -783,4 +788,23 @@ class Order extends AbstractJsonSerializable
 
         return null;
     }
+
+    /**
+     * @return bool
+     */
+    public function getMarketingPermission(): bool {
+      return $this->marketingPermission;
+    }
+
+    /**
+     * @param bool $marketingPermission
+     *
+     * @return Order
+     */
+    public function setMarketingPermission(bool $marketingPermission): Order {
+      $this->marketingPermission = $marketingPermission;
+      return $this;
+    }
+
+
 }
