@@ -168,6 +168,11 @@ class Order extends AbstractJsonSerializable
      */
     protected array $vouchers;
 
+    /**
+     * @var int
+     */
+    protected $earnedBonusPoints;
+
   /**
    * @var bool $marketingPermission
    */
@@ -806,5 +811,21 @@ class Order extends AbstractJsonSerializable
       return $this;
     }
 
+    /**
+     * @return int
+     */
+    public function getEarnedBonusPoints(): int {
+      return $this->earnedBonusPoints;
+    }
+
+    /**
+     * @param int $earnedBonusPoints
+     *
+     * @return Order
+     */
+    public function setEarnedBonusPoints(int $earnedBonusPoints): Order {
+      $this->earnedBonusPoints = $earnedBonusPoints;
+      return $this;
+    }
 
 }

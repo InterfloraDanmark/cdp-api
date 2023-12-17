@@ -78,6 +78,11 @@ class Account extends AbstractJsonSerializable {
      * @var \Interflora\CdpApi\Model\MarketingPermission[]
      */
     protected $marketingPermissions = null;
+    
+    /**
+     * @var integer
+     */
+    protected $bonusPoints = 0;
 
     /**
      * @return string
@@ -323,5 +328,24 @@ class Account extends AbstractJsonSerializable {
 
         return $this;
     }
+
+    /**
+     * @return int
+     */
+    public function getBonusPoints(): int {
+      return $this->bonusPoints;
+    }
+
+    /**
+     * @param int $bonusPoints
+     *
+     * @return Account
+     */
+    public function setBonusPoints(int $bonusPoints): Account {
+      $this->bonusPoints = $bonusPoints;
+      return $this;
+    }
+    
+    
 
 }
