@@ -50,6 +50,8 @@ class Payment extends AbstractJsonSerializable
      */
     protected $internal_reference;
 
+    protected float $amount;
+
     /**
      * @return string
      */
@@ -210,6 +212,15 @@ class Payment extends AbstractJsonSerializable
         $this->internal_reference = $internal_reference;
 
         return $this;
+    }
+
+    public function getAmount(): float {
+      return $this->amount;
+    }
+
+    public function setAmount(float $amount): Payment {
+      $this->amount = $amount;
+      return $this;
     }
 
 }
