@@ -52,6 +52,8 @@ class Payment extends AbstractJsonSerializable
 
     protected float $amount;
 
+    protected $title;
+
     /**
      * @return string
      */
@@ -222,5 +224,23 @@ class Payment extends AbstractJsonSerializable
       $this->amount = $amount;
       return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle(): string {
+      return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     *
+     * @return Payment
+     */
+    public function setTitle(string $title): self {
+      $this->title = $title;
+      return $this;
+    }
+
 
 }
