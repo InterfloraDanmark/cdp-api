@@ -78,11 +78,13 @@ class Account extends AbstractJsonSerializable {
      * @var \Interflora\CdpApi\Model\MarketingPermission[]
      */
     protected $marketingPermissions = null;
-    
+
     /**
      * @var integer
      */
     protected $bonusPoints = 0;
+
+    protected bool $loyaltyMember = false;
 
     /**
      * @return string
@@ -345,7 +347,14 @@ class Account extends AbstractJsonSerializable {
       $this->bonusPoints = $bonusPoints;
       return $this;
     }
-    
-    
+
+    public function isLoyaltyMember(): bool {
+      return $this->loyaltyMember;
+    }
+
+    public function setLoyaltyMember(bool $loyaltyMember): Account {
+      $this->loyaltyMember = $loyaltyMember;
+      return $this;
+    }
 
 }
