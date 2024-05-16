@@ -86,6 +86,8 @@ class Account extends AbstractJsonSerializable {
 
     protected bool $loyaltyMember = false;
 
+    protected bool $signupMarketingConsent = false;
+
     /**
      * @return string
      */
@@ -354,6 +356,15 @@ class Account extends AbstractJsonSerializable {
 
     public function setLoyaltyMember(bool $loyaltyMember): Account {
       $this->loyaltyMember = $loyaltyMember;
+      return $this;
+    }
+
+    public function isSignupMarketingConsent(): bool {
+      return $this->signupMarketingConsent;
+    }
+
+    public function setSignupMarketingConsent(bool $signupMarketingConsent): Account {
+      $this->signupMarketingConsent = $signupMarketingConsent;
       return $this;
     }
 
