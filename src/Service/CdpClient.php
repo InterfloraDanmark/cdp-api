@@ -2,6 +2,7 @@
 
 namespace Interflora\CdpApi\Service;
 
+use GuzzleHttp\Exception\ClientException;
 use Interflora\CdpApi\Model\Account;
 use Interflora\CdpApi\Model\Business;
 use Interflora\CdpApi\Model\MarketingPermission;
@@ -318,6 +319,29 @@ class CdpClient
     {
         $path = sprintf('%s/account/%s', self::API_ROOT, $uuid);
         $result = $this->delete($path);
+        return json_decode($result->getBody(), true);
+    }
+
+    /**
+     * @param string $email
+     *
+     * @return mixed
+     */
+    public function anonymizeAccount($email){
+        $path = sprintf('%s/account/%s/anonymize', self::API_ROOT, $email);
+        
+        try {
+          $result = $this->post($path, null);
+        } catch (\Exception $exception) {
+            // Account could not be retrieved, usually because of 404 - not found
+            if ($exception instanceof ClientException) {
+              return TRUE;
+            }
+            else {
+              throw $exception;
+            }
+        }
+        
         return json_decode($result->getBody(), true);
     }
 
