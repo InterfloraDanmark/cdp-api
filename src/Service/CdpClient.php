@@ -592,4 +592,23 @@ class CdpClient
             return null;
         }
     }
+
+    /**
+     * Send confirmation email to given order ID and email address.
+     *
+     * @param string $orderId
+     * @param string $email
+     *
+     * @return mixed|null
+     */
+    public function sendConfirmationEmail(string $orderId, string $email)
+    {
+        try {
+            $path = sprintf('%s/order/%s/confirmation-email/%s', self::API_ROOT, $orderId, $email);
+            $result = $this->post($path, null);
+            return json_decode($result->getBody(), true);
+        } catch (RequestException $exception) {
+            return null;
+        }
+    }
 }
