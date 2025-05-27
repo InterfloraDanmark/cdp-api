@@ -281,7 +281,10 @@ class CdpClient
 				$offset = 0;
 				$limit = 10000;
 				$path = sprintf('%s/account/%s/orders?offset=%d&limit=%d', self::API_ROOT, $uuid, $offset, $limit);
-				return json_decode($this->get($path)->getBody(), true);
+				$response = json_decode($this->get($path)->getBody(), true);
+				return [
+					'data' => $response['orders'] ?? [],
+				];
 			} catch (RequestException $exception) {
 				// Account could not be retrieved, usually because of 404 - not found
 				return null;
