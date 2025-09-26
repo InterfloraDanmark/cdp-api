@@ -613,6 +613,7 @@ class CdpClient
             $result = $this->post($path, null);
             return json_decode($result->getBody(), true);
         } catch (RequestException $exception) {
+            $this->getLogger()->notice('Exception sending confirmation email: ' . $exception->getMessage());
             return null;
         }
     }
